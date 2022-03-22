@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SmartFarm</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+ 
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@500;600;700&family=Lato:wght@300;400;700;900&family=Reggae+One&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header>
+        <nav
+      class="navbar navbar-expand-md navbar-light bg-light nav-bar p-0 pl-md-5"
+    >
+      <!-- <div class="container-fluid"> -->
+      <div class="nav-logo">
+        <a href="#" class="navbar-brand p-4 py-md-0 d-inline-block">AEFARM</a>
+      </div>
+
+      <button
+        class="navbar-toggler me-4"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="dropdown align-self-stretch d-block d-md-none">
+          <div
+            class="dropdown-toggle nav-user"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="nav-user__avatar">
+              <img src="/images/avatar.jpg" alt="User avatar" />
+            </span>
+            <span class="nav-user__name">Vu Tran</span>
+          </div>
+
+          <div
+            class="dropdown-menu nav-user__dropdown"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <a class="dropdown-item nav-user__dropdown-item" href="#"
+              >Thông tin cá nhân</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="#"
+              >Quản lý thiết bị</a
+            >
+          </div>
+        </div>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item nav__item">
+            <a class="nav-link nav__link" aria-current="page" href="#"
+              >Trang chủ</a
+            >
+          </li>
+
+          <li class="nav-item nav__item">
+            <a class="nav-link nav__link" href="#">Điều khiển</a>
+          </li>
+          <li class="nav-item nav__item">
+            <a class="nav-link nav__link" href="@Url.Action("Thonke","Statistic")">Xem thống kê</a>
+          </li>
+          <li class="nav-item nav__item">
+            <a class="nav-link nav__link">Thiết lập ngưỡng</a>
+          </li>
+        </ul>
+        <div class="dropdown align-self-stretch d-none d-md-inline-block">
+          <div
+            class="dropdown-toggle nav-user"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="nav-user__avatar">
+              <img src="~/image/avatar.jpg" alt="User avatar" />
+            </span>
+            <span class="nav-user__name">Vu Tran</span>
+          </div>
+
+          <div
+            class="dropdown-menu nav-user__dropdown"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <a class="dropdown-item nav-user__dropdown-item" href="#"
+              >Thông tin cá nhân</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="#"
+              >Quản lý thiết bị</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - SmartFarm - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
