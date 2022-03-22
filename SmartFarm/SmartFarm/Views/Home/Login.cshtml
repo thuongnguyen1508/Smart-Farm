@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+@model SmartFarm.Models.LoginViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<body>
+    <div class="form">
+        <h2>Đăng Nhập</h2>
+        <form asp-controller="Home" asp-action="Login" method="post">
+            <div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input type="text"
+                           required="required"
+                           class="form-control"
+                           placeholder="Tên tài khoản"
+                           name="loginViewModel.UserName"
+                           value="@Model.UserName" />
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-key"></i>
+                        </span>
+                    </div>
+                    <input type="password"
+                           required="required"
+                           class="form-control"
+                           name="loginViewModel.Password"
+                           placeholder="Mật khẩu" />
+                </div>
+            </div>
+
+            <div>
+                <div class="card-footer">
+                    <div class="button-login">
+                        <button href="#" class="btn float-left login_btn">
+                            Trở lại
+                        </button>
+                    </div>
+                    <div class="button-login">
+                        <button type="submit" class="btn float-right login_btn"> Đăng nhập</button>
+                    </div>
+                </div>
+                <div>
+                    <p>Bạn chưa có tài khoản</p><a href="#">Đăng ký</a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

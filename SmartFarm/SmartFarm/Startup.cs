@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SmartFarm.Data.Configurations;
+using Microsoft.AspNetCore.Identity;
+using SmartFarm.Data.Entities;
+using SmartFarm.Services;
 
 namespace SmartFarm
 {
@@ -29,6 +32,14 @@ namespace SmartFarm
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<Customer, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<SignInManager<Customer>, SignInManager<Customer>>();
+            services.AddTransient<UserManager<Customer>, UserManager<Customer>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

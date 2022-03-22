@@ -1,0 +1,241 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+    background: #b3b3b3;
+}
+
+.form {
+    width: 360px;
+    padding: 8% 0 0;
+    background: #b3b3b3;
+    position: relative;
+    z-index: 1;
+    margin: 200px auto;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+    .form h2 {
+        font-size: 25px;
+        text-align: left;
+        color: #f2f2f2;
+        margin-top: 5px;
+    }
+
+    .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .form button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #ffc312;
+        width: 100%;
+        border: 0;
+        color: black;
+        font-size: 15px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+        height: 30px;
+    }
+
+        .form button:hover, .form button:active, .form button:focus {
+            background: #43A047;
+        }
+
+    .form .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+    }
+
+        .form .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+    .form .register-form {
+        display: none;
+    }
+
+body {
+    background: #FFFFFF;
+    ; /* fallback for old browsers */
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #ffc312;
+    color: black;
+    border: 0 !important;
+}
+
+.card-footer {
+    display: flex;
+}
+
+.button-login {
+    margin-right: 80px;
+}
+
+.card-footer p {
+    text-align: center;
+    padding-left: 0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.wrapper {
+    padding: 30px 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 600px
+}
+
+h4 {
+    letter-spacing: -1px;
+    font-weight: 400
+}
+
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover
+}
+
+#img-section p,
+#deactivate p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: justify
+}
+
+#img-section b,
+#img-section button,
+#deactivate b {
+    font-size: 14px
+}
+
+label {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+    padding-left: 3px
+}
+
+.form-control {
+    border-radius: 10px
+}
+
+input[placeholder] {
+    font-weight: 500
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #0779e4
+}
+
+select {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 40px;
+    padding: 5px 10px
+}
+
+    select:focus {
+        outline: none
+    }
+
+.button {
+    background-color: #fff;
+    color: #0779e4
+}
+
+    .button:hover {
+        background-color: #0779e4;
+        color: #fff
+    }
+
+.btn-primary {
+    background-color: #0779e4
+}
+
+.danger {
+    background-color: #fff;
+    color: #e20404;
+    border: 1px solid #ddd
+}
+
+    .danger:hover {
+        background-color: #e20404;
+        color: #fff
+    }
+
+@media(max-width:576px) {
+    .wrapper {
+        padding: 25px 20px
+    }
+
+    #deactivate {
+        line-height: 18px
+    }
+}
+
+.footer-edit {
+    display: flex;
+}
+
+    .footer-edit button {
+        margin-top: 50px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #7BC36C;
+        cursor: pointer;
+    }
+
+        .footer-edit button:hover {
+            background-color: #e20404;
+        }
+
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 50rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('homeImage.png');
+}
+
+.HomeContent {
+    padding-top: 5rem;
+    margin-left: 50px;
+    font-size: large;
+    color: #e20404;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
