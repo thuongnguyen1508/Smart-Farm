@@ -26,10 +26,11 @@
 <body>
     <header>
         <nav
-      class="navbar navbar-expand-md navbar-light bg-light nav-bar p-0 pl-md-5">
+      class="navbar navbar-expand-md navbar-light bg-light nav-bar p-0 pl-md-5 fixed-top"
+    >
       <!-- <div class="container-fluid"> -->
       <div class="nav-logo">
-        <a href="@Url.Action("Index","Home")" class="navbar-brand p-4 py-md-0 d-inline-block">AEFARM</a>
+        <a href="@Url.Action("Home","Home")" class="navbar-brand p-4 py-md-0 d-inline-block">AEFARM</a>
       </div>
 
       <button
@@ -62,17 +63,20 @@
             class="dropdown-menu nav-user__dropdown"
             aria-labelledby="dropdownMenuButton"
           >
-            <a class="dropdown-item nav-user__dropdown-item" href="#"
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("InforUser","Home")"
               >Thông tin cá nhân</a
             >
-            <a class="dropdown-item nav-user__dropdown-item" href="#"
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDeivce","Home")"
               >Quản lý thiết bị</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Login","Home")"
+              >Đăng xuất</a
             >
           </div>
         </div>
         <ul class="navbar-nav me-auto">
           <li class="nav-item nav__item">
-            <a class="nav-link nav__link" aria-current="page" href="@Url.Action("Index","Home")"
+            <a class="nav-link nav__link" aria-current="page" href="@Url.Action("Home","Home")"
               >Trang chủ</a
             >
           </li>
@@ -104,11 +108,14 @@
             class="dropdown-menu nav-user__dropdown"
             aria-labelledby="dropdownMenuButton"
           >
-            <a class="dropdown-item nav-user__dropdown-item" href="#"
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("InforUser","Home")"
               >Thông tin cá nhân</a
             >
-            <a class="dropdown-item nav-user__dropdown-item" href="#"
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDevice","Home")"
               >Quản lý thiết bị</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Login","Home")"
+              >Đăng xuất</a
             >
           </div>
         </div>
@@ -123,7 +130,7 @@
     </div>
     <footer class="footer">
       <div class="nav-logo lg-font my-5 mx-auto text-center">
-        <a href="@Url.Action("Index","Home")" class="d-inline-block lg-font">AEFARM</a>
+        <a href="@Url.Action("Home","Home")" class="d-inline-block lg-font">AEFARM</a>
       </div>
       <ul class="nav">
         <li class="nav__item">

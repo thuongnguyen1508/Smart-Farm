@@ -1,0 +1,273 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section CustomCss{
+    <link rel ="stylesheet" type="text/css" href="/css//manageDevice.css"/>
+}
+ <section class="section-content">
+      <h1 class="heading-1 mb-5 d-flex align-items-center">
+        <svg class="heading__icon me-4">
+          <use xlink:href="/image/spirite.svg#icon-folder-open"></use>
+        </svg>
+        Quản lý thiết bị
+      </h1>
+      <div class="row">
+        <div
+          class="col-lg-4 col-12 d-flex d-lg-block justify-content-between mb-4 mb-lg-0"
+        >
+          <figure class="map">
+            <figcaption class="map__unit">(&#13217;)</figcaption>
+            <img src="/image/map.png" class="img-fluid" alt="map image" />
+          </figure>
+          <div class="adding-device">
+            <h2 class="heading-2 text-center mb-4">Thêm thiết bị</h2>
+
+            <form class="form">
+              <div class="mb-3 form-group">
+                <label for="types" class="form__label">Loại:</label>
+                <select name="types" id="types" class="form__input">
+                  <option value="Input">Input</option>
+                  <option value="Output">Output</option>
+                </select>
+              </div>
+              <div class="mb-3 form-group">
+                <label for="devices" class="form__label">Thiết bị:</label>
+                <select name="devices" id="devices" class="form__input">
+                  <option value="DHT11">DHT11</option>
+                  <option value="Temperature sensor">Temperature sensor</option>
+                </select>
+              </div>
+              <div class="mb-3 form-group">
+                <label for="outputs" class="form__label">Output kết nối:</label>
+                <select name="outputs" id="outputs" class="form__input">
+                  <option value="3212123">Water pumper (x:26, y:-22)</option>
+                  <option value="3212123">Water pumper (x:26, y:-22)</option>
+                  <option value="3212123">Water pumper (x:26, y:-22)</option>
+                </select>
+              </div>
+
+              <div class="mb-3 form-group">
+                <span class="form__label">Vị trí: </span>
+                <div class="coordinate-group">
+                  <label for="coordinate-x">X</label>
+                  <input
+                    type="text"
+                    value="0"
+                    id="coordinate-x"
+                    name="coordinate-x"
+                  />
+                </div>
+                <div class="coordinate-group">
+                  <label for="coordinate-y">Y</label>
+                  <input
+                    type="text"
+                    value="0"
+                    id="coordinate-y"
+                    name="coordinate-y"
+                  />
+                </div>
+              </div>
+              <div class="mb-5">
+                <span class="form__label">Thiết lập: </span>
+                <div class="threshold">
+                  <span class="threshold-max-title">Max</span>
+                  <span class="threshold-min-title">Min</span>
+                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
+                  <input type="text" class="threshold__value" name="temp-max" />
+                  <input type="text" class="threshold__value" name="temp-min" />
+                  <span class="threshold__subject">Độ ẩm (%):</span>
+                  <input type="text" class="threshold__value" name="temp-max" />
+                  <input type="text" class="threshold__value" name="temp-min" />
+                  <span class="threshold__subject">Thời gian kiểm tra:</span>
+
+                  <select
+                    name="checked_time"
+                    class="form__input threshold__checked-time"
+                  >
+                    <option value="300">5 phút</option>
+                    <option value="600">10 phút</option>
+                    <option value="1800">30 phút</option>
+                    <option value="3600">1 tiếng</option>
+                  </select>
+                </div>
+              </div>
+              <button class="button button-primary mx-auto my-0">Thêm</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- -------------DEVICE LISTING--------------- -->
+        <div class="col-lg-8 col-12">
+          <div class="devices">
+            <div class="device-output mb-5">
+              <h2 class="heading-2 device-type mb-5">Output</h2>
+              <div class="device-container">
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+              </div>
+            </div>
+            <div class="device-output">
+              <h2 class="heading-2 device-type mb-5">Input</h2>
+              <div class="device-container">
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img mb-3"
+                  />
+
+                  <div class="device__name">Máy bơm</div>
+                  <div class="device__coordinates">
+                    X: <span class="device__coordinate-x"> 36</span> Y:
+                    <span class="device__coordinate-y">-22</span>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+@{
+}

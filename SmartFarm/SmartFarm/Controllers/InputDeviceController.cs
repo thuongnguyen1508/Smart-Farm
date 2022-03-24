@@ -8,7 +8,7 @@ namespace SmartFarm.Controllers
         {
             return View();
         }
-        public IActionResult setUpNguong()
+        public IActionResult SetUpNguong()
         {
             return View();
         }

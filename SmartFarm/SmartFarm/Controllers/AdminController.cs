@@ -2,13 +2,13 @@
 
 namespace SmartFarm.Controllers
 {
-    public class OutputDeviceController : Controller
+    public class AdminController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ManageUser()
         {
             return View();
         }
-        public IActionResult ControlDevice()
+        public IActionResult EditUser()
         {
             return View();
         }

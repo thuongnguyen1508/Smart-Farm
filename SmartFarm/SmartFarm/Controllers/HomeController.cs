@@ -20,9 +20,12 @@ namespace SmartFarm.Controllers
 
         public IActionResult Index()
         {
+            return RedirectToAction("Home"); 
+        }
+        public IActionResult Home()
+        {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
@@ -32,6 +35,18 @@ namespace SmartFarm.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult InforUser()
+        {
+            return View();
+        }
+        public IActionResult ManageDevice()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
         }
     }
 }
