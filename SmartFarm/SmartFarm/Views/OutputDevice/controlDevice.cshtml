@@ -1,0 +1,159 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section CustomCss{
+    <link rel="stylesheet" type="text/css" href="/css/input.css" />
+}
+    <!-- -----------------SECTION CONTENT------------------ -->
+    <section class="section-content">
+      <h1 class="heading-1 mb-5 d-flex align-items-center">
+        <svg class="heading__icon me-4">
+          <use xlink:href="/images/sprite.svg#icon-cogs"></use>
+        </svg>
+        Điều khiển từ xa
+      </h1>
+
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-5 mb-lg-0">
+          <figure class="map">
+            <figcaption class="map__unit">(&#13217;)</figcaption>
+            <img src="images/map.png" class="img-fluid" alt="map image" />
+          </figure>
+        </div>
+
+        <div class="col-lg-8 col-12">
+          <div class="devices">
+            <div class="device-output mb-5">
+              <h2 class="heading-2 device-type mb-5">Output</h2>
+              <div class="device-container">
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img"
+                  />
+                  <div class="device__details">
+                    <div class="device__name">Máy bơm</div>
+                    <div class="device__coordinates">
+                      X: <span class="device__coordinate-x"> 36</span> Y:
+                      <span class="device__coordinate-y">-22</span>
+                    </div>
+                  </div>
+
+                  <label class="switch3">
+                    <input type="checkbox" />
+                    <div></div>
+                  </label>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img"
+                  />
+                  <div class="device__details">
+                    <div class="device__name">Máy bơm</div>
+                    <div class="device__coordinates">
+                      X: <span class="device__coordinate-x"> 36</span> Y:
+                      <span class="device__coordinate-y">-22</span>
+                    </div>
+                  </div>
+
+                  <label class="switch3">
+                    <input type="checkbox" />
+                    <div></div>
+                  </label>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img"
+                  />
+                  <div class="device__details">
+                    <div class="device__name">Máy bơm</div>
+                    <div class="device__coordinates">
+                      X: <span class="device__coordinate-x"> 36</span> Y:
+                      <span class="device__coordinate-y">-22</span>
+                    </div>
+                  </div>
+
+                  <label class="switch3">
+                    <input type="checkbox" />
+                    <div></div>
+                  </label>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img"
+                  />
+                  <div class="device__details">
+                    <div class="device__name">Máy bơm</div>
+                    <div class="device__coordinates">
+                      X: <span class="device__coordinate-x"> 36</span> Y:
+                      <span class="device__coordinate-y">-22</span>
+                    </div>
+                  </div>
+
+                  <label class="switch3">
+                    <input type="checkbox" />
+                    <div></div> 
+                  </label>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img"
+                  />
+                  <div class="device__details">
+                    <div class="device__name">Máy bơm</div>
+                    <div class="device__coordinates">
+                      X: <span class="device__coordinate-x"> 36</span> Y:
+                      <span class="device__coordinate-y">-22</span>
+                    </div>
+                  </div>
+
+                  <label class="switch3">
+                    <input type="checkbox" />
+                    <div></div>
+                  </label>
+                </figure>
+                <figure class="device__figure">
+                  <img
+                    src="/image/avatar.jpg"
+                    alt="device image"
+                    class="device__img"
+                  />
+                  <div class="device__details">
+                    <div class="device__name">Máy bơm</div>
+                    <div class="device__coordinates">
+                      X: <span class="device__coordinate-x"> 36</span> Y:
+                      <span class="device__coordinate-y">-22</span>
+                    </div>
+                  </div>
+
+                  <label class="switch3">
+                    <input type="checkbox" />
+                    <div></div>
+                  </label>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+@section Scripts{
+    document.querySelectorAll(".switch3 input").forEach((el) => {
+  el.addEventListener("change", function () {
+    var dad = this.parentElement;
+    // console.log(dad);
+    if (this.checked) dad.classList.add("switch3-checked");
+    else dad.classList.remove("switch3-checked");
+  });
+});
+
+}

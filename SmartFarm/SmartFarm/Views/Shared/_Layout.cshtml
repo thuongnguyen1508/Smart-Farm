@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SmartFarm</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+
  
     <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,12 +16,12 @@
       href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@500;600;700&family=Lato:wght@300;400;700;900&family=Reggae+One&display=swap"
       rel="stylesheet"
     />
+    @await RenderSectionAsync("CustomCss",false)
 </head>
 <body>
     <header>
         <nav
-      class="navbar navbar-expand-md navbar-light bg-light nav-bar p-0 pl-md-5"
-    >
+      class="navbar navbar-expand-md navbar-light bg-light nav-bar p-0 pl-md-5">
       <!-- <div class="container-fluid"> -->
       <div class="nav-logo">
         <a href="#" class="navbar-brand p-4 py-md-0 d-inline-block">AEFARM</a>
@@ -72,13 +73,13 @@
           </li>
 
           <li class="nav-item nav__item">
-            <a class="nav-link nav__link" href="#">Điều khiển</a>
+            <a class="nav-link nav__link" href="@Url.Action("controlDevice","OutputDevice")">Điều khiển</a>
+          </li>
+          <li class="nav-item nav__item">
+            <a class="nav-link nav__link" href="@Url.Action("setUpNguong","InputDevice")">Thiết lập ngưỡng</a>
           </li>
           <li class="nav-item nav__item">
             <a class="nav-link nav__link" href="@Url.Action("Thonke","Statistic")">Xem thống kê</a>
-          </li>
-          <li class="nav-item nav__item">
-            <a class="nav-link nav__link">Thiết lập ngưỡng</a>
           </li>
         </ul>
         <div class="dropdown align-self-stretch d-none d-md-inline-block">
@@ -110,17 +111,41 @@
       <!-- </div> -->
     </nav>
     </header>
-    <div class="container">
+    <div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - SmartFarm - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>*@
+    <footer class="footer">
+      <div class="nav-logo lg-font my-5 mx-auto text-center">
+        <a href="#" class="d-inline-block lg-font">AEFARM</a>
+      </div>
+      <ul class="nav">
+        <li class="nav__item">
+          <a href="#" class="nav__link">Find your dream home</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Request proposal</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Download home planner</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Contact us</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Submit your property</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Come work with us!</a>
+        </li>
+      </ul>
+      <p class="copyright">
+        &copy; Copyright 2022 by AE mien trung team. Feel free to use this
+        project for your own purposes. This does NOT apply if you plan to
+        produce your own course or tutorials based on this project.
+      </p>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
