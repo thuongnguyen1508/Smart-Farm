@@ -1,8 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@section CustomCss{
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+}
+<!-- -----------Section home----------->
+<section class="home">
+    <h1 class="heading--1 HomeContent d-inline-block">WELCOME TO AEFARM</h1>
+</section>

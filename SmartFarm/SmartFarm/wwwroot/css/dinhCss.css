@@ -346,7 +346,7 @@ th {
     width: 80px;
     height: 37px;
     border-radius: 37px;
-    background-color: #7bc36c;
+    background-color: #e74c3c;
     cursor: pointer;
     transition: all 0.3s;
     overflow: hidden;
@@ -368,7 +368,7 @@ th {
         position: absolute;
         width: 27px;
         height: 27px;
-        border-radius: 27px;
+        border-radius: 50%;
         background-color: white;
         top: 5px;
         left: 5px;
@@ -391,17 +391,17 @@ th {
         }
 
         .switch3 div:before {
-            content: "ON";
+            content: "OFF";
             left: 130%;
         }
 
         .switch3 div:after {
-            content: "OFF";
+            content: "ON";
             right: 100%;
         }
 
 .switch3-checked {
-    background-color: #B83230;
+    background-color: #4d9140;
     box-shadow: none;
 }
 
