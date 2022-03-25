@@ -9,8 +9,7 @@ namespace SmartFarm.Data.Entities
     {
         public int Id { get; set; }
         public bool TrangThaiHoatDong { get; set; }
-        public string ViTriTrangTrai { get; set; }
+        public String FeedName{ get; set;}
         public Equipment Equipment { get; set; }
-        public List<InputOutput> InputOutputs { get; set; }
     }
 }

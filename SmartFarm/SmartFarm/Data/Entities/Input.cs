@@ -12,8 +12,7 @@ namespace SmartFarm.Data.Entities
         public float Max { get; set; }
         public float Min { get; set; }
         public DateTime ThoiGianTruyXuat { get; set; }
-        public string ViTriTrangTrai { get; set; }
+        public String FeedName { get; set; }
         public Equipment Equipment { get; set; }
-        public List<InputOutput> InputOutputs { get; set; }
     }
 }

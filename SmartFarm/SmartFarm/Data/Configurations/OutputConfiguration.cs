@@ -15,7 +15,7 @@ namespace SmartFarm.Data.Configurations
             builder.ToTable("OUTPUT");
             builder.HasKey(output => output.Id);
             builder.Property(output => output.TrangThaiHoatDong);
-            builder.Property(output => output.ViTriTrangTrai);
+            builder.Property(output => output.FeedName);
             builder.HasOne(equipment => equipment.Equipment)
                 .WithOne(output => output.Output)
                 .HasForeignKey<Output>(output => output.Id);
