@@ -21,7 +21,6 @@ namespace SmartFarm.Data.Configurations
             modelBuilder.ApplyConfiguration(new InputConfiguration());
             modelBuilder.ApplyConfiguration(new OutputConfiguration());
             modelBuilder.ApplyConfiguration(new StatisticalConfiguration());
-            modelBuilder.ApplyConfiguration(new InputOutputConfiguration());
         }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
@@ -29,6 +28,5 @@ namespace SmartFarm.Data.Configurations
         public DbSet<Input> Input { get; set; }
         public DbSet<Output> Output { get; set; }
         public DbSet<Statistical> Statistical { get; set; }
-        public DbSet<InputOutput> InputOutput { get; set; }
     }
 }

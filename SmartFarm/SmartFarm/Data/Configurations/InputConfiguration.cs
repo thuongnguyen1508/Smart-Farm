@@ -18,7 +18,7 @@ namespace SmartFarm.Data.Configurations
             builder.Property(input => input.Max);
             builder.Property(input => input.Min);
             builder.Property(input => input.ThoiGianTruyXuat);
-            builder.Property(input => input.ViTriTrangTrai);
+            builder.Property(input => input.FeedName);
             builder.HasOne(equipment => equipment.Equipment)
                 .WithOne(input => input.Input)
                 .HasForeignKey<Input>(input => input.Id);

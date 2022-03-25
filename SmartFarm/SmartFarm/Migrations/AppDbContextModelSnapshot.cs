@@ -286,6 +286,9 @@ namespace SmartFarm.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("FeedName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LoaiThietBi")
                         .HasColumnType("nvarchar(max)");
 
@@ -298,27 +301,9 @@ namespace SmartFarm.Migrations
                     b.Property<DateTime>("ThoiGianTruyXuat")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ViTriTrangTrai")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("INPUT");
-                });
-
-            modelBuilder.Entity("SmartFarm.Data.Entities.InputOutput", b =>
-                {
-                    b.Property<int>("IdInput")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdOutput")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdInput", "IdOutput");
-
-                    b.HasIndex("IdOutput");
-
-                    b.ToTable("INPUTOUTPUT");
                 });
 
             modelBuilder.Entity("SmartFarm.Data.Entities.Output", b =>
@@ -326,11 +311,11 @@ namespace SmartFarm.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("FeedName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("TrangThaiHoatDong")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ViTriTrangTrai")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -433,21 +418,6 @@ namespace SmartFarm.Migrations
                         .WithOne("Input")
                         .HasForeignKey("SmartFarm.Data.Entities.Input", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SmartFarm.Data.Entities.InputOutput", b =>
-                {
-                    b.HasOne("SmartFarm.Data.Entities.Input", "Input")
-                        .WithMany("InputOutputs")
-                        .HasForeignKey("IdInput")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("SmartFarm.Data.Entities.Output", "Output")
-                        .WithMany("InputOutputs")
-                        .HasForeignKey("IdOutput")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
