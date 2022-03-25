@@ -13,9 +13,7 @@ namespace SmartFarm.Data.Configurations
         public void Configure(EntityTypeBuilder<InputOutput> builder)
         {
             builder.ToTable("INPUTOUTPUT");
-            builder.HasKey(data => data.IdLink);
-            builder.Property(a => a.IdInput);
-            builder.Property(a => a.IdOutput);
+            builder.HasKey(a => new {a.IdInput, a.IdOutput});
 
             builder.HasOne(input => input.Input)
                 .WithMany(a => a.InputOutputs)
