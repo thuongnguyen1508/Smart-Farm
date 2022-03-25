@@ -14,7 +14,6 @@ namespace SmartFarm.Data.Entities
         public DateTime ThoiGianTruyXuat { get; set; }
         public string ViTriTrangTrai { get; set; }
         public Equipment Equipment { get; set; }
-        public InputData InputData { get; set; }
         public List<InputOutput> InputOutputs { get; set; }
     }
 }

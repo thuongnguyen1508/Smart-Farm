@@ -11,7 +11,6 @@ namespace SmartFarm.Data.Entities
         public bool TrangThaiHoatDong { get; set; }
         public string ViTriTrangTrai { get; set; }
         public Equipment Equipment { get; set; }
-        public List<OutputData> OutputDatas { get; set; }
         public List<InputOutput> InputOutputs { get; set; }
     }
 }

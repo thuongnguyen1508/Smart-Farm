@@ -7,7 +7,6 @@ namespace SmartFarm.Data.Entities
 {
     public class InputOutput
     {
-        public int IdLink { get; set; }
         public int IdInput { get; set; }
         public int IdOutput { get; set; }
         public Input Input { get; set; }
