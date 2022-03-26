@@ -1,16 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SmartFarm.Services;
 
 namespace SmartFarm.Controllers
 {
     public class OutputDeviceController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
+        private readonly OutputService _output;
+        public OutputDeviceController(OutputService output){
+            _output = output;
         }
-        public IActionResult ControlDevice()
+        public async Task<IActionResult> ControlDeviceAsync()
         {
-            return View();
+            var outputs= await _output.GetOutputAsync();
+            return View(outputs);
         }
     }
 }

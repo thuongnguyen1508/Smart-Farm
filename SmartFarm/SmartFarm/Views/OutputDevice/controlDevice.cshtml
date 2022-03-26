@@ -1,162 +1,107 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using System.Collections.Generic;
+@using SmartFarm.Models;
+@model List<OutputModel>;
 @{
-    ViewData["Title"] = "Remote Control";
+  ViewData["Title"] = "Remote Control";
 }
 @section CustomCss{
-    <link rel="stylesheet" type="text/css" href="/css/dinhCss.css" />
+<link rel="stylesheet" type="text/css" href="/css/dinhCss.css" />
 }
-    <!-- -----------------SECTION CONTENT------------------ -->
-    <section class="section-content">
-      <h1 class="heading-1 mb-5 d-flex align-items-center">
-        <img src="/image/cogs-solid.svg" class="heading__icon me-4"/>
-        Điều khiển từ xa
-      </h1>
+<!-- -----------------SECTION CONTENT------------------ -->
+<section class="section-content">
+  <h1 class="heading-1 mb-5 d-flex align-items-center">
+    <img src="/image/cogs-solid.svg" class="heading__icon me-4" />
+    Điều khiển từ xa
+  </h1>
 
-      <div class="row">
-        <div class="col-12 col-lg-4 mb-5 mb-lg-0">
-          <figure class="map">
-            <figcaption class="map__unit">(&#13217;)</figcaption>
-            <img src="/image/map.png" class="img-fluid" alt="map image" />
-          </figure>
-        </div>
+  <div class="row">
+    <div class="col-12 col-lg-4 mb-5 mb-lg-0">
+      <figure class="map">
+        <figcaption class="map__unit">(&#13217;)</figcaption>
+        <img src="/image/map.png" class="img-fluid" alt="map image" />
+      </figure>
+    </div>
 
-        <div class="col-lg-8 col-12">
-          <div class="devices">
-            <div class="device-output mb-5">
-              <h2 class="heading-2 device-type mb-5">Output</h2>
-              <div class="device-container">
-                <figure class="device__figure">
-                  <img
-                    src="/image/avatar.jpg"
-                    alt="device image"
-                    class="device__img"
-                  />
-                  <div class="device__details">
-                    <div class="device__name">Máy bơm</div>
-                    <div class="device__coordinates">
-                      X: <span class="device__coordinate-x"> 36</span> Y:
-                      <span class="device__coordinate-y">-22</span>
-                    </div>
+    <div class="col-lg-8 col-12">
+      <div class="devices">
+        <div class="device-output mb-5">
+          <h2 class="heading-2 device-type mb-5">Output</h2>
+          <div class="device-container">
+            @foreach (var sp in Model)
+            {
+              <figure class="device__figure">
+                <img src="/image/avatar.jpg" alt="device image" class="device__img" />
+                <div class="device__details">
+                  <div class="device__name">@sp.name</div>
+                  <div class="device__coordinates">
+                    @sp.viTri
                   </div>
-
-                  <label class="switch3">
-                    <input type="checkbox" />
-                    <div></div>
-                  </label>
-                </figure>
-                <figure class="device__figure">
-                  <img
-                    src="/image/avatar.jpg"
-                    alt="device image"
-                    class="device__img"
-                  />
-                  <div class="device__details">
-                    <div class="device__name">Máy bơm</div>
-                    <div class="device__coordinates">
-                      X: <span class="device__coordinate-x"> 36</span> Y:
-                      <span class="device__coordinate-y">-22</span>
-                    </div>
-                  </div>
-
-                  <label class="switch3">
-                    <input type="checkbox" />
-                    <div></div>
-                  </label>
-                </figure>
-                <figure class="device__figure">
-                  <img
-                    src="/image/avatar.jpg"
-                    alt="device image"
-                    class="device__img"
-                  />
-                  <div class="device__details">
-                    <div class="device__name">Máy bơm</div>
-                    <div class="device__coordinates">
-                      X: <span class="device__coordinate-x"> 36</span> Y:
-                      <span class="device__coordinate-y">-22</span>
-                    </div>
-                  </div>
-
-                  <label class="switch3">
-                    <input type="checkbox" />
-                    <div></div>
-                  </label>
-                </figure>
-                <figure class="device__figure">
-                  <img
-                    src="/image/avatar.jpg"
-                    alt="device image"
-                    class="device__img"
-                  />
-                  <div class="device__details">
-                    <div class="device__name">Máy bơm</div>
-                    <div class="device__coordinates">
-                      X: <span class="device__coordinate-x"> 36</span> Y:
-                      <span class="device__coordinate-y">-22</span>
-                    </div>
-                  </div>
-
-                  <label class="switch3">
-                    <input type="checkbox" />
-                    <div></div>
-                  </label>
-                </figure>
-                <figure class="device__figure">
-                  <img
-                    src="/image/avatar.jpg"
-                    alt="device image"
-                    class="device__img"
-                  />
-                  <div class="device__details">
-                    <div class="device__name">Máy bơm</div>
-                    <div class="device__coordinates">
-                      X: <span class="device__coordinate-x"> 36</span> Y:
-                      <span class="device__coordinate-y">-22</span>
-                    </div>
-                  </div>
-
-                  <label class="switch3">
-                    <input type="checkbox" />
-                    <div></div>
-                  </label>
-                </figure>
-                <figure class="device__figure">
-                  <img
-                    src="/image/avatar.jpg"
-                    alt="device image"
-                    class="device__img"
-                  />
-                  <div class="device__details">
-                    <div class="device__name">Máy bơm</div>
-                    <div class="device__coordinates">
-                      X: <span class="device__coordinate-x"> 36</span> Y:
-                      <span class="device__coordinate-y">-22</span>
-                    </div>
-                  </div>
-
-                  <label class="switch3">
-                    <input type="checkbox" />
-                    <div></div>
-                  </label>
-                </figure>
-              </div>
-            </div>
+                </div>
+                <label class="switch3">
+                  <input type="checkbox" feedName="@sp.feedName" />
+                  <div></div>
+                </label>
+              </figure>
+            }
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 @section Scripts{
-    <script type="text/javascript" >
-    console.log(document.querySelector(".switch3 input").checked);
-    document.querySelectorAll(".switch3 input").forEach((el) => {
-        el.addEventListener("change", function () {
-            var dad = this.parentElement;
-            console.log(dad);
-            if (this.checked) dad.classList.add("switch3-checked");
-            else dad.classList.remove("switch3-checked");
-        });
+<script type="text/javascript">
+  var user_Adafruit={
+      aIO_key:"aio_TSXy34r4hvDqQSwr7NP2jltNKyhh",
+      userName:"luucongdinh"
+  }
+
+  function requestPost(key_feed,aIO_key,userName,data){
+    var _data={value: `${data}`};
+    var url=`https://io.adafruit.com/api/v2/${userName}/feeds/${key_feed}/data`;
+    console.log(url);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(_data),
+      headers: {
+        "Content-Type": "application/json",
+        "X-Aio-Key": `${aIO_key}`
+      } 
+    })
+    .then(response => response.json()) 
+    .then(json => json)
+    .catch(err => console.log(err));
+  }
+
+
+  document.querySelectorAll(".switch3 input").forEach((el) => {
+    var dad = el.parentElement;
+    var key_feed=el.getAttribute("feedName");
+    var url=`https://io.adafruit.com/api/v2/${user_Adafruit.userName}/feeds/${key_feed}/data`;
+    console.log(url);
+    fetch(url)
+        .then(response=>response.json())
+        .then(data=>{
+          if(data[0].value!=="0"){
+              if (el.checked == false) {
+                el.checked = true;
+                if(dad.classList.length==1) dad.classList.add("switch3-checked");
+              }
+            }
+        })
+        .catch(err => console.log(err));
+    el.addEventListener("change", function (e) {
+      if (this.checked )
+      {
+        if( dad.classList.length==1) dad.classList.add("switch3-checked");
+        requestPost(key_feed,user_Adafruit.aIO_key,user_Adafruit.userName,1);
+      }
+      else
+      {
+        dad.classList.remove("switch3-checked");
+        requestPost(key_feed,user_Adafruit.aIO_key,user_Adafruit.userName,0);
+      }
     });
-    </script>
+  });
+</script>
 }

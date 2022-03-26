@@ -2,7 +2,7 @@
 
 namespace SmartFarm.Migrations
 {
-    public partial class smartfarm : Migration
+    public partial class _updateLast : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

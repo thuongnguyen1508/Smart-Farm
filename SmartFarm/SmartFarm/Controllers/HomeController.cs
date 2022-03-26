@@ -18,8 +18,12 @@ namespace SmartFarm.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int a)
         {
+            var b=3;
+            a=b;
+
+            Console.WriteLine("HomeController");
             return RedirectToAction("Home"); 
         }
         public IActionResult Home()
