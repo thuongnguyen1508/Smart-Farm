@@ -20,9 +20,6 @@ namespace SmartFarm.Controllers
 
         public IActionResult Index(int a)
         {
-            var b=3;
-            a=b;
-
             Console.WriteLine("HomeController");
             return RedirectToAction("Home"); 
         }

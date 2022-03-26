@@ -26,11 +26,11 @@
       <div class="devices">
         <div class="device-output mb-5">
           <h2 class="heading-2 device-type mb-5">Output</h2>
-          <div class="device-container">
+          <div class="device-container"style="margin-top: 3rem;">
             @foreach (var sp in Model)
             {
               <figure class="device__figure">
-                <img src="/image/avatar.jpg" alt="device image" class="device__img" />
+                <img src="@sp.img" alt="device image" class="device__img" />
                 <div class="device__details">
                   <div class="device__name">@sp.name</div>
                   <div class="device__coordinates">
@@ -52,7 +52,7 @@
 @section Scripts{
 <script type="text/javascript">
   var user_Adafruit={
-      aIO_key:"aio_TSXy34r4hvDqQSwr7NP2jltNKyhh",
+      aIO_key:"aio_WQjO56Ov3iCb6nJn3JQ1ZlT3QRsC",
       userName:"luucongdinh"
   }
 
@@ -68,28 +68,38 @@
         "X-Aio-Key": `${aIO_key}`
       } 
     })
-    .then(response => response.json()) 
-    .then(json => json)
-    .catch(err => console.log(err));
+        .then(response => response.json()) 
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
   }
-
-
+  function initial(){
+    document.querySelectorAll(".switch3 input").forEach((el) => {
+      var dad = el.parentElement;
+      var key_feed=el.getAttribute("feedName");
+      var url=`https://io.adafruit.com/api/v2/${user_Adafruit.userName}/feeds/${key_feed}/data`;
+      console.log(url);
+      fetch(url)
+          .then(response=>response.json())
+          .then(data=>{
+            if(data[0].value!=="0"){
+                if (el.checked == false) {
+                  el.checked = true;
+                  if(dad.classList.length==1) dad.classList.add("switch3-checked");
+                }
+              }
+            else 
+            { 
+              el.checked = false;
+              dad.classList.remove("switch3-checked");
+            }
+          })
+          .catch(err => console.log(err));
+    });}
+  initial();
+  setInterval(initial,300000);
   document.querySelectorAll(".switch3 input").forEach((el) => {
     var dad = el.parentElement;
     var key_feed=el.getAttribute("feedName");
-    var url=`https://io.adafruit.com/api/v2/${user_Adafruit.userName}/feeds/${key_feed}/data`;
-    console.log(url);
-    fetch(url)
-        .then(response=>response.json())
-        .then(data=>{
-          if(data[0].value!=="0"){
-              if (el.checked == false) {
-                el.checked = true;
-                if(dad.classList.length==1) dad.classList.add("switch3-checked");
-              }
-            }
-        })
-        .catch(err => console.log(err));
     el.addEventListener("change", function (e) {
       if (this.checked )
       {
