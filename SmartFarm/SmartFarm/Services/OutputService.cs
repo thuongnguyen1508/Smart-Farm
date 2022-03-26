@@ -22,13 +22,13 @@ namespace SmartFarm.Services
                             select new OutputModel
                             {
                                 id=o.Id,
-                            name=e.Ten,
-                            trangThaiHoatDong=o.TrangThaiHoatDong,
-                            feedName=o.FeedName,
-                            thuocVeTrangTrai=e.ThuocVeTrangTrai,
-                            trangThai=e.TrangThai,
-                            viTri=e.ViTriDat,
-                            img=e.Img
+                                name=e.Ten,
+                                trangThaiHoatDong=o.TrangThaiHoatDong,
+                                feedName=o.FeedName,
+                                thuocVeTrangTrai=e.ThuocVeTrangTrai,
+                                trangThai=e.TrangThai,
+                                viTri=e.ViTriDat,
+                                img=e.Image
                             }).ToListAsync();
                 return result;
         }

@@ -10,7 +10,7 @@ using SmartFarm.Data;
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220326045144__updateLast")]
+    [Migration("20220326124422__updateLast")]
     partial class _updateLast
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -246,7 +246,7 @@ namespace SmartFarm.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Img")
+                    b.Property<string>("Imgage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Loai")
