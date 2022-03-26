@@ -329,6 +329,7 @@ th {
 }
 
 .device__name {
+    width: 9rem;
     font-size: 1.8rem;
     font-family: "Lato", san-serif;
     font-weight: 700;

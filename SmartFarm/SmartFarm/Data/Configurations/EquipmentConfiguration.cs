@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SmartFarm.Data.Entities;
 
-namespace SmartFarm.Data.Configurations
+namespace SmartFarm.Data
 {
     public class EquipmentConfiguration: IEntityTypeConfiguration<Equipment>
     {
@@ -15,6 +15,7 @@ namespace SmartFarm.Data.Configurations
             builder.ToTable("EQUIPMENT");
             builder.HasKey(equipment => equipment.Id);
             builder.Property(equipment => equipment.Ten);
+            builder.Property(equipment => equipment.Image);
             builder.Property(equipment => equipment.Loai);
             builder.Property(equipment => equipment.ThuocVeTrangTrai);
             builder.Property(equipment => equipment.TrangThai);

@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SmartFarm.Data.Configurations;
+using SmartFarm.Data;
 
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220325164730_update")]
-    partial class update
+    [Migration("20220326045144__updateLast")]
+    partial class _updateLast
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,6 +242,12 @@ namespace SmartFarm.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Loai")
                         .HasColumnType("nvarchar(max)");

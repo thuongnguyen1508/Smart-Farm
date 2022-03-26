@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmartFarm.Data.Entities
 {
@@ -11,8 +8,10 @@ namespace SmartFarm.Data.Entities
         public string Ten { get; set; }
         public string Loai { get; set; }
         public int ThuocVeTrangTrai { get; set; }
+        public String Image{ get; set;}
         public bool TrangThai { get; set; }
         public string ViTriDat { get; set; }
+        public string Img { get; set; }
         public Farm Farm { get; set; }
         public Input Input { get; set; }
         public Output Output { get; set; }

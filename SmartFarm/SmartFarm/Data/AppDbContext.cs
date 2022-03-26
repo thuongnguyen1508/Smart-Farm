@@ -4,7 +4,7 @@ using System;
 using SmartFarm.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace SmartFarm.Data.Configurations
+namespace SmartFarm.Data
 {
     public class AppDbContext : IdentityDbContext<Customer, IdentityRole<Guid>, Guid>
     {

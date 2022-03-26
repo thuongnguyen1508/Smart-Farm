@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SmartFarm.Data.Entities;
 
-namespace SmartFarm.Data.Configurations
+namespace SmartFarm.Data
 {
     public class InputConfiguration : IEntityTypeConfiguration<Input>
     {
