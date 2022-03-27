@@ -18,11 +18,15 @@ namespace SmartFarm.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int a)
+        {
+            Console.WriteLine("HomeController");
+            return RedirectToAction("Home"); 
+        }
+        public IActionResult Home()
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
@@ -32,6 +36,18 @@ namespace SmartFarm.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult InforUser()
+        {
+            return View();
+        }
+        public IActionResult ManageDevice()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
         }
     }
 }

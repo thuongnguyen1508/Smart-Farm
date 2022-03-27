@@ -1,0 +1,160 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section CustomCss{
+    <link rel="stylesheet" type="text/css" href="/css/inforUser.css" />
+}
+<!-- ***************** CONTENT ************************ -->
+    <section class="section-user">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <figure class="user__quicki4">
+            <img src="/image/avatar.jpg" alt="user avatar" />
+            <figcaption class="user__quicki4-details">
+              <h2 class="heading-2 user__quicki4-name">Xoos cover</h2>
+              <span class="user__quicki4-gmail">xoos@gmail.com</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="user__in4-container">
+            <h1 class="heading-2 text-center mb-4">Đổi ảnh đại diện</h1>
+            <form class="form mb-4">
+              <div class="form__group">
+                <label for="password" class="form__label">Ảnh</label>
+                <div class="position-relative">
+                  <input type="file" accept=".jpg, .png" style="height:50px"/>
+                  <img src="#" class="file_img" width="150" height="100" alt="Avatar"/>
+                </div>
+              </div>
+              <br>
+              <div class="d-flex mb-5">
+                <button class="button me-5">Cập nhật</button>
+              </div>
+            </form>
+            <h1 class="heading-2 text-center mb-4">Thông tin cá nhân</h1>
+            <form class="form mb-4">
+              <div class="form__group">
+                <label for="lastName" class="form__label">Họ</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    class="form__input"
+                    value="Trần Lương"
+                  />
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="firstName" class="form__label">Tên</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    class="form__input"
+                    value="Vũ"
+                  />
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="email" class="form__label">Email</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form__input"
+                    value="vu.tran2801@hcmut.edu.vn"
+                  />
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="address" class="form__label">Địa chỉ</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    class="form__input"
+                    value="12 Lê Đình Phương Nha Trang"
+                  />
+                </div>
+              </div>
+            </form>
+            <div class="d-flex mb-5">
+              <button class="button me-5">Cập nhật</button>
+              <button class="button">Hủy</button>
+            </div>
+            <h1 class="heading-2 text-center mb-4">Đổi mật khẩu</h1>
+            <form class="form mb-4">
+              <div class="form__group">
+                <label for="password" class="form__label">Mật khẩu mới</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form__input"
+                    value="passwordtest"
+                  />
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="passwordConfirm" class="form__label"
+                  >Xác nhận mật khẩu mới</label
+                >
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="password"
+                    id="passwordConfirm"
+                    name="passwordConfirm"
+                    class="form__input"
+                    value="passwordtest"
+                  />
+                </div>
+              </div>
+            </form>
+            <button class="button">Cập nhật</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+@section Scripts{
+    <script type="text/javascript">
+        const reader = new FileReader();
+
+    // Lắng nghe trạng thái đăng tải tệp
+    document.querySelector('input[type="file"]').addEventListener("change", (event) => {
+	    // Lấy thông tin tập tin được đăng tải
+	    const files  = event.target.files;
+	
+	    // Đọc thông tin tập tin đã được đăng tải
+	    const file=files[0];
+	
+	    // Lắng nghe quá trình đọc tập tin hoàn thành
+	    document.querySelector('.file_img').src = URL.createObjectURL(file);
+	    // Thực hiện hành động gì đó, có thể append chuỗi giá trị này vào thẻ IMG 
+	})
+    </script>
+}
