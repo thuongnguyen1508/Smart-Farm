@@ -11,7 +11,7 @@ namespace SmartFarm.Data.Entities
         public string LoaiThietBi { get; set; }
         public float Max { get; set; }
         public float Min { get; set; }
-        public DateTime ThoiGianTruyXuat { get; set; }
+        public TimeSpan ThoiGianTruyXuat { get; set; }
         public String FeedName { get; set; }
         public Equipment Equipment { get; set; }
     }
