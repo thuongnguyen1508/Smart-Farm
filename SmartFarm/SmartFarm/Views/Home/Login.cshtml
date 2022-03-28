@@ -14,9 +14,9 @@
       </figure>
       <div class="login__form-container">
         <h2 class="heading-3 u-mg-bt-big">Member Login</h2>
-        <form action="#" class="form login__form">
+        <form class="form login__form" asp-controller="Home" asp-action="Login" method="post">
           <div class="form__group">
-            <input type="email" class="form__email" placeholder="Email" />
+            <input type="text" class="form__email" placeholder="UserName" name="loginViewModel.UserName" />
             <svg>
               <use xlink:href="/image/spirite.svg#icon-envelope"></use>
             </svg>
@@ -26,6 +26,7 @@
               type="password"
               class="form__password"
               placeholder="Password"
+              name="loginViewModel.Password"
             />
             <svg>
               <use xlink:href="/image/spirite.svg#icon-lock-closed"></use>
