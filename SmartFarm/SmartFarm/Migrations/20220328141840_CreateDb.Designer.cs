@@ -10,8 +10,8 @@ using SmartFarm.Data;
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220328140510__5AE")]
-    partial class _5AE
+    [Migration("20220328141840_CreateDb")]
+    partial class CreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
