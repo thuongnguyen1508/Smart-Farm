@@ -1,4 +1,3 @@
-"use strict";
 // /api/v2/{username}/feeds/{feed_key}/data/chart
 // curl -H "X-AIO-Key: {io_key}" 'https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data/chart?hours=1'
 
@@ -9,6 +8,11 @@ let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
   toDate = new Date(Date.now()).toISOString();
 
 let interval = 1 * 24 * 60 * 60; //30days
+
+var user_Adafruit={
+  aIO_key:"aio_JCEU76mVFHHLoYLJHuAaDRR3WRgy",
+  userName:"luucongdinh"
+}
 //********************************************** */
 
 const getDataAdafruitInInterval = function (
@@ -47,30 +51,27 @@ const getDataAdafruit = function (
   feedKey,
   resolution,
   timeInSecond,
-
   errorMsg = "Something went wrong"
 ) {
   const hour = timeInSecond / (60 * 60);
   const url = `https://io.adafruit.com/api/v2/${userName}/feeds/${feedKey}/data/chart?hours=${hour}&resolution=${resolution}`;
-  return fetch(url, {
+  return fetch(url,{
     headers: {
       "X-Aio-Key": `${userKey}`,
     },
     method: "GET",
   }).then((response) => {
-    if (!response.ok) throw new Error(`${errorMsg} ${response}`);
     //   if (!response.ok) return console.log(response);
     //   console.log(response.json());
     return response.json();
   });
 };
-
 //***************CHART DISPLAY**************** */
 //*****From date to date****** */
 getDataAdafruitInInterval(
-  "aio_XMPh76qq4w6OatlUNloo6tIGlW08",
-  "jax2801",
-  "bbc-temp",
+  user_Adafruit.aIO_key,
+  user_Adafruit.userName,
+  "dndn-temp",
   1,
   fromDate,
   toDate
@@ -190,9 +191,9 @@ getDataAdafruitInInterval(
 
 //******Interval*********** */
 getDataAdafruit(
-  "aio_XMPh76qq4w6OatlUNloo6tIGlW08",
-  "jax2801",
-  "bbc-temp",
+  user_Adafruit.aIO_key,
+  user_Adafruit.userName,
+  "dndn-temp",
   1,
   interval
 ).then((res) => {
