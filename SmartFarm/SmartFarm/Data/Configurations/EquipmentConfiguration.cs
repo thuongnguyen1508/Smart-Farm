@@ -21,6 +21,7 @@ namespace SmartFarm.Data
             builder.Property(equipment => equipment.ThongTin);
             builder.Property(equipment => equipment.TrangThai);
             builder.Property(equipment => equipment.ViTriDat);
+            builder.Property(equipment => equipment.ThongTin);
             builder.HasOne(farm => farm.Farm)
                 .WithMany(equipment => equipment.Equipments)
                 .HasForeignKey(equipment => equipment.ThuocVeTrangTrai);

@@ -13,8 +13,7 @@ namespace SmartFarm.Data
         public void Configure(EntityTypeBuilder<Input> builder)
         {
             builder.ToTable("INPUT");
-            builder.HasKey(input => new { input.Id,input.LoaiThietBi});
-            builder.Property(input => input.LoaiThietBi);
+            builder.HasKey(input => new{input.Id,input.LoaiThietBi});
             builder.Property(input => input.Max);
             builder.Property(input => input.Min);
             builder.Property(input => input.ThoiGianTruyXuat);

@@ -2,16 +2,12 @@
 
 namespace SmartFarm.Migrations
 {
-    public partial class _updateLast : Migration
+    public partial class _5AE : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Img",
-                table: "EQUIPMENT");
-
             migrationBuilder.AddColumn<string>(
-                name: "Imgage",
+                name: "ThongTin",
                 table: "EQUIPMENT",
                 nullable: true);
         }
@@ -19,14 +15,8 @@ namespace SmartFarm.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Imgage",
+                name: "ThongTin",
                 table: "EQUIPMENT");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Img",
-                table: "EQUIPMENT",
-                type: "nvarchar(max)",
-                nullable: true);
         }
     }
 }
