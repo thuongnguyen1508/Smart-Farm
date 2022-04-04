@@ -10,7 +10,7 @@ let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
 let interval = 1 * 24 * 60 * 60; //30days
 
 var user_Adafruit={
-  aIO_key:"aio_JCEU76mVFHHLoYLJHuAaDRR3WRgy",
+  aIO_key:"aio_BILv55CqqksId70O5V4j7bpi01iX",
   userName:"luucongdinh"
 }
 //********************************************** */

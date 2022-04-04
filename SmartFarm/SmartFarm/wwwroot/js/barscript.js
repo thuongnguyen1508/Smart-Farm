@@ -17,7 +17,7 @@
     "Tháng 12",
   ];
   var user_Adafruit={
-    aIO_key:"aio_JCEU76mVFHHLoYLJHuAaDRR3WRgy",
+    aIO_key:"aio_BILv55CqqksId70O5V4j7bpi01iX",
     userName:"luucongdinh"
   }
   const dataGroups = MONTHS.map((el) => {
@@ -30,7 +30,7 @@
 
   //   **************DISPLAY CHART*****************
   getDataAdafruitInInterval(
-    "aio_JCEU76mVFHHLoYLJHuAaDRR3WRgy",
+    "aio_BILv55CqqksId70O5V4j7bpi01iX",
     "luucongdinh",
     "dndn-temp",
     1,
