@@ -11,7 +11,7 @@ namespace SmartFarm.Data.Entities
         public String Image{ get; set;}
         public bool TrangThai { get; set; }
         public string ViTriDat { get; set; }
-        public string Imgage { get; set; }
+        public string ThongTin { get; set; }
         public Farm Farm { get; set; }
         public Input Input { get; set; }
         public Output Output { get; set; }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartFarm.Data;
 
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220328141840_CreateDb")]
+    partial class CreateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,14 +245,11 @@ namespace SmartFarm.Migrations
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-                        
+
                     b.Property<string>("Loai")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ThongTin")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ThuocVeTrangTrai")
@@ -304,8 +303,8 @@ namespace SmartFarm.Migrations
                     b.Property<float>("Min")
                         .HasColumnType("real");
 
-                    b.Property<TimeSpan>("ThoiGianTruyXuat")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("ThoiGianTruyXuat")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id", "LoaiThietBi");
 
