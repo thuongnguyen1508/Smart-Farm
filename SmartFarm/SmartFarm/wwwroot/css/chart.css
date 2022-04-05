@@ -1,0 +1,22 @@
+#myChart,
+    #myChart1,
+    #myChart2 {
+    width: 100% !important;
+    height: auto !important;
+    color: rgb(62, 128, 172);
+    }
+    .section-content {
+    padding: 2rem;
+    }
+
+    @media only screen and (max-width: 59.375em) {
+        .section-content {
+            padding: 2rem;
+        }
+    }
+
+    @media only screen and (max-width: 42.1875em) {
+        .section-content {
+            padding: 2rem;
+        }
+    }
