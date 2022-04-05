@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartFarm.Data;
 
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220326124422__updateLast")]
+    partial class _updateLast
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,14 +245,14 @@ namespace SmartFarm.Migrations
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-                        
+
+                    b.Property<string>("Imgage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Loai")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ThongTin")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ThuocVeTrangTrai")
@@ -292,10 +294,10 @@ namespace SmartFarm.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("LoaiThietBi")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("FeedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LoaiThietBi")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Max")
@@ -304,35 +306,12 @@ namespace SmartFarm.Migrations
                     b.Property<float>("Min")
                         .HasColumnType("real");
 
-                    b.Property<TimeSpan>("ThoiGianTruyXuat")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("ThoiGianTruyXuat")
+                        .HasColumnType("datetime2");
 
-                    b.HasKey("Id", "LoaiThietBi");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("INPUT");
-                });
-
-            modelBuilder.Entity("SmartFarm.Data.Entities.InputOutput", b =>
-                {
-                    b.Property<int>("IdInput")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdOutput")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LoaiThietBiInput")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("IdInput", "IdOutput", "LoaiThietBiInput");
-
-                    b.HasIndex("IdOutput");
-
-                    b.HasIndex("IdInput", "LoaiThietBiInput");
-
-                    b.ToTable("INPUTOUTPUT");
                 });
 
             modelBuilder.Entity("SmartFarm.Data.Entities.Output", b =>
@@ -447,21 +426,6 @@ namespace SmartFarm.Migrations
                         .WithOne("Input")
                         .HasForeignKey("SmartFarm.Data.Entities.Input", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SmartFarm.Data.Entities.InputOutput", b =>
-                {
-                    b.HasOne("SmartFarm.Data.Entities.Output", "Output")
-                        .WithMany("InputOutputs")
-                        .HasForeignKey("IdOutput")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("SmartFarm.Data.Entities.Input", "Input")
-                        .WithMany("InputOutputs")
-                        .HasForeignKey("IdInput", "LoaiThietBiInput")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
