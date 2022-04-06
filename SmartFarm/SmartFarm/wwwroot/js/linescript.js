@@ -14,9 +14,10 @@ let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
 let interval = 1 * 24 * 60 * 60; //30days
 
 var user_Adafruit={
-  aIO_key:"aio_GZGv906YyqxkBUTXAwD2UQqJt4pI",
+  aIO_key:"aio_hATl55tWk334rxGQ5ohXWnlGoYk4",
   Name:"luucongdinh"
 }
+console.log(user_Adafruit.aIO_key)
 //********************************************** */
 
 const getDataAdafruitInInterval = function (

@@ -17,12 +17,13 @@
     "Tháng 12",
   ];
   var user_Adafruit={
-    aIO_key:"aio_GZGv906YyqxkBUTXAwD2UQqJt4pI",
+    aIO_key:"aio_hATl55tWk334rxGQ5ohXWnlGoYk4",
     Name:"luucongdinh"
   }
   const dataGroups = MONTHS.map((el) => {
     return { month: el, maxNumber: 0, minNumber: 0, number: 0 };
   });
+  
   //   console.log(dataGroups);
   const year = 2022;
   let fromDate = new Date(`January 01, ${year}`);
