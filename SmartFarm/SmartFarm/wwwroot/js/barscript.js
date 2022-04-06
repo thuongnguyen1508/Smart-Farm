@@ -1,5 +1,9 @@
 (() => {
   // *****************Variables*****************
+  let user_Adafruit1={
+    aIO_key:"aio_Nkqh82hA641HOw47h9hMiS1Hp9em",
+    Name:"luucongdinh"
+  }
   let max_threshold = 80,
     min_threshold = 30;
   const MONTHS = [
@@ -16,10 +20,7 @@
     "Tháng 11",
     "Tháng 12",
   ];
-  var user_Adafruit={
-    aIO_key:"aio_hATl55tWk334rxGQ5ohXWnlGoYk4",
-    Name:"luucongdinh"
-  }
+
   const dataGroups = MONTHS.map((el) => {
     return { month: el, maxNumber: 0, minNumber: 0, number: 0 };
   });
@@ -31,8 +32,8 @@
 
   //   **************DISPLAY CHART*****************
   getDataAdafruitInInterval(
-    user_Adafruit.aIO_key,
-    user_Adafruit.Name,
+    user_Adafruit1.aIO_key,
+    user_Adafruit1.Name,
     document.querySelector('#feed').getAttribute("value"),
     1,
     fromDate,

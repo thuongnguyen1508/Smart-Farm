@@ -2,10 +2,12 @@
 // curl -H "X-AIO-Key: {io_key}" 'https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data/chart?hours=1'
 
 //*************CUSTOM variable******************* */
+let user_Adafruit={
+  aIO_key:"aio_Nkqh82hA641HOw47h9hMiS1Hp9em",
+  Name:"luucongdinh"
+}
 var nameDevice=document.querySelector('#feed').getAttribute("name");
 var kind=document.querySelector('#feed').getAttribute("kind");
-console.log("kind: ",nameDevice);
-console.log("kind: ",kind);
 let max_threshold = 80,
   min_threshold = 30;
 let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
@@ -13,10 +15,6 @@ let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
 
 let interval = 1 * 24 * 60 * 60; //30days
 
-var user_Adafruit={
-  aIO_key:"aio_hATl55tWk334rxGQ5ohXWnlGoYk4",
-  Name:"luucongdinh"
-}
 console.log(user_Adafruit.aIO_key)
 //********************************************** */
 
