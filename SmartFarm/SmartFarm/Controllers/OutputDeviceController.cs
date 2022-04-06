@@ -7,8 +7,8 @@ namespace SmartFarm.Controllers
 {
     public class OutputDeviceController : Controller
     {
-        private readonly OutputService _output;
-        public OutputDeviceController(OutputService output){
+        private readonly IOutputService _output;
+        public OutputDeviceController(IOutputService output){
             _output = output;
         }
         public async Task<IActionResult> ControlDeviceAsync()

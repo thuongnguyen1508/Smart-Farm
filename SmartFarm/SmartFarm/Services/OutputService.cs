@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace SmartFarm.Services
 {
-    public class OutputService:IOutputService
+    public class OutputService : IOutputService
     {
         private readonly AppDbContext _context;
         public OutputService(AppDbContext context)
@@ -17,20 +17,20 @@ namespace SmartFarm.Services
         }
         public async Task<List<OutputModel>> GetOutputAsync()
         {
-            var result =  await (from o in _context.Output
-                           join e in _context.Equipment on o.Id equals e.Id
-                            select new OutputModel
-                            {
-                                id=o.Id,
-                                name=e.Ten,
-                                trangThaiHoatDong=o.TrangThaiHoatDong,
-                                feedName=o.FeedName,
-                                thuocVeTrangTrai=e.ThuocVeTrangTrai,
-                                trangThai=e.TrangThai,
-                                viTri=e.ViTriDat,
-                                img=e.Image
-                            }).ToListAsync();
-                return result;
+            var result = await (from o in _context.Output
+                                join e in _context.Equipment on o.Id equals e.Id
+                                select new OutputModel
+                                {
+                                    id = o.Id,
+                                    name = e.Ten,
+                                    trangThaiHoatDong = o.TrangThaiHoatDong,
+                                    feedName = o.FeedName,
+                                    thuocVeTrangTrai = e.ThuocVeTrangTrai,
+                                    trangThai = e.TrangThai,
+                                    viTri = e.ViTriDat,
+                                    img = e.Image
+                                }).ToListAsync();
+            return result;
         }
     }
 

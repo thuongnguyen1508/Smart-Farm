@@ -2,6 +2,10 @@
 // curl -H "X-AIO-Key: {io_key}" 'https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data/chart?hours=1'
 
 //*************CUSTOM variable******************* */
+var nameDevice=document.querySelector('#feed').getAttribute("name");
+var kind=document.querySelector('#feed').getAttribute("kind");
+console.log("kind: ",nameDevice);
+console.log("kind: ",kind);
 let max_threshold = 80,
   min_threshold = 30;
 let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
@@ -10,8 +14,8 @@ let fromDate = new Date("February 01, 2022 03:24:00").toISOString(),
 let interval = 1 * 24 * 60 * 60; //30days
 
 var user_Adafruit={
-  aIO_key:"aio_BILv55CqqksId70O5V4j7bpi01iX",
-  userName:"luucongdinh"
+  aIO_key:"aio_pIrV38KOQAiSEEGIVTnE2zviecTR",
+  Name:"luucongdinh"
 }
 //********************************************** */
 
@@ -70,8 +74,8 @@ const getDataAdafruit = function (
 //*****From date to date****** */
 getDataAdafruitInInterval(
   user_Adafruit.aIO_key,
-  user_Adafruit.userName,
-  "dndn-temp",
+  user_Adafruit.Name,
+  document.querySelector('#feed').getAttribute("value"),
   1,
   fromDate,
   toDate
@@ -104,7 +108,6 @@ getDataAdafruitInInterval(
     min.push(min_threshold);
     max.push(max_threshold);
   });
-
   const data = {
     labels: labels,
     datasets: [
@@ -176,7 +179,7 @@ getDataAdafruitInInterval(
         },
         title: {
           display: true,
-          text: `Biểu đồ biểu diễn sự biến thiên thông số của ... từ  ${new Date(
+          text: `Biểu đồ biểu diễn sự biến thiên thông số của thiết bị ${nameDevice} về ${kind} từ  ${new Date(
             fromDate
           ).toLocaleDateString("vi-VN")} đến ${new Date(
             toDate
@@ -192,13 +195,12 @@ getDataAdafruitInInterval(
 //******Interval*********** */
 getDataAdafruit(
   user_Adafruit.aIO_key,
-  user_Adafruit.userName,
-  "dndn-temp",
+  user_Adafruit.Name,
+  document.querySelector('#feed').getAttribute("value"),
   1,
   interval
 ).then((res) => {
   //Prepare data to display
-
   console.log(res);
   const dataset = res.data;
 
@@ -299,7 +301,7 @@ getDataAdafruit(
         },
         title: {
           display: true,
-          text: `Biểu đồ biểu diễn sự biến thiên thông số của ... trong ${
+          text: `Biểu đồ biểu diễn sự biến thiên thông số của thiết bị ${nameDevice} về ${kind} trong ${
             interval / 60 / 60
           } giờ qua`,
         },

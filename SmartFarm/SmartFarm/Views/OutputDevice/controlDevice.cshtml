@@ -52,7 +52,7 @@
 @section Scripts{
 <script type="text/javascript">
   var user_Adafruit={
-      aIO_key:"aio_BILv55CqqksId70O5V4j7bpi01iX",
+      aIO_key:"aio_pIrV38KOQAiSEEGIVTnE2zviecTR",
       userName:"luucongdinh"
   }
 
@@ -86,8 +86,8 @@
         })
           .then(response=>response.json())
           .then(data=>{
-            console.log(data);
-            if(data[0].value!=="0"){
+            console.log(el.getAttribute("feedName"));
+            if((data[0].value!=="0" && el.getAttribute("feedName")=="dadn-led")||(data[0].value!=="3" && el.getAttribute("feedName")=="dadn-buzzer")||(data[0].value!=="5" && el.getAttribute("feedName")=="dadn-pump")){
                 if (el.checked == false) {
                   el.checked = true;
                   if(dad.classList.length==1) dad.classList.add("switch3-checked");
@@ -106,16 +106,23 @@
   document.querySelectorAll(".switch3 input").forEach((el) => {
     var dad = el.parentElement;
     var key_feed=el.getAttribute("feedName");
+    var data
     el.addEventListener("change", function (e) {
       if (this.checked )
       {
         if( dad.classList.length==1) dad.classList.add("switch3-checked");
-        requestPost(key_feed,user_Adafruit.aIO_key,user_Adafruit.userName,1);
+        if (key_feed=="dadn-led") data=1
+        else if(key_feed=="dadn-buzzer") data=4
+        else if(key_feed=="dadn-pump") data=6
+        requestPost(key_feed,user_Adafruit.aIO_key,user_Adafruit.userName,data);
       }
       else
       {
         dad.classList.remove("switch3-checked");
-        requestPost(key_feed,user_Adafruit.aIO_key,user_Adafruit.userName,0);
+        if (key_feed=="dadn-led") data=0
+        else if(key_feed=="dadn-buzzer") data=3
+        else if(key_feed=="dadn-pump") data=5
+        requestPost(key_feed,user_Adafruit.aIO_key,user_Adafruit.userName,data);
       }
     });
   });

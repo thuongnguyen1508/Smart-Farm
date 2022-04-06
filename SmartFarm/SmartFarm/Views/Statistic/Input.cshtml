@@ -1,4 +1,6 @@
-﻿
+﻿@using SmartFarm.Models;
+
+@model InputModel;
 @{
     ViewData["Title"] = "Input";
 }
@@ -14,23 +16,23 @@
                     <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="~/image/Led.jpg" alt="">
+                                <img class="img-fluid w-100" src="@Model.image" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="bg-light p-4 text-center fs-3">
-                                <p class="text-primary fw-medium mb-2">Tên thiết bị</p>
+                                <p class="text-primary fw-medium mb-2">@Model.name</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="~/image/ouputdesc.png" alt="">
+                                <img class="img-fluid w-100" src="/images/ouputdesc.png" alt="">
                                 <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" href="@Model.image" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
@@ -47,6 +49,7 @@
                                     </div>
                                     <div class="col-3">
                                         <input type="button" value="Tra cứu" class="form-control fs-3" style="background-color: #FF8080;"/>
+                                        <input id="feed" hidden="true" value="@Model.feedName" name="@Model.name" kind="@Model.loaiThietBi"/>
                                     </div>
                                 </form>
                             </div>
@@ -109,7 +112,6 @@
 @section Scripts{
     <script type="text/javascript">
     document.querySelector('#chart').style.display = 'none';
-    console.log(document.querySelector('input[type="button"]'));
     document.querySelector('input[type="button"]').onclick=function(e) {
         if (document.querySelector('select').value=="2") 
         {  
