@@ -17,7 +17,7 @@
     "Tháng 12",
   ];
   var user_Adafruit={
-    aIO_key:"aio_pIrV38KOQAiSEEGIVTnE2zviecTR",
+    aIO_key:"aio_GZGv906YyqxkBUTXAwD2UQqJt4pI",
     Name:"luucongdinh"
   }
   const dataGroups = MONTHS.map((el) => {
