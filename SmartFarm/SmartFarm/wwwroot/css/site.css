@@ -299,3 +299,13 @@ body {
     background-color: red;
     display: inline-block;
 }
+.LoginUser {
+    left: 5px !important;
+    font-size: 20px !important;
+    --text-color: red !important;
+    text-decoration-line: none !important;
+}
+.LoginUser:hover {
+    --text-color: blue !important;
+    text-decoration-line: none !important;
+}
