@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartFarm.Data;
 
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220408163006_updateOutputValueOpen")]
+    partial class updateOutputValueOpen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -337,9 +339,6 @@ namespace SmartFarm.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Auto")
-                        .HasColumnType("bit");
-
                     b.Property<string>("FeedName")
                         .HasColumnType("nvarchar(max)");
 
@@ -447,8 +446,8 @@ namespace SmartFarm.Migrations
             modelBuilder.Entity("SmartFarm.Data.Entities.Input", b =>
                 {
                     b.HasOne("SmartFarm.Data.Entities.Equipment", "Equipment")
-                        .WithMany("Input")
-                        .HasForeignKey("Id")
+                        .WithOne("Input")
+                        .HasForeignKey("SmartFarm.Data.Entities.Input", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

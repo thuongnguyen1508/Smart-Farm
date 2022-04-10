@@ -12,5 +12,7 @@ namespace SmartFarm.Data.Entities
         public String FeedName{ get; set;}
         public Equipment Equipment { get; set; }
         public List<InputOutput> InputOutputs { get; set; }
+        public int ValueOpen { get; set; }
+        public bool Auto { get; set; }
     }
 }
