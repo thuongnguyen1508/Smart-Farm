@@ -1,6 +1,9 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using System.Collections.Generic;
+@using SmartFarm.Models;
+@model List<InputModel>;
 @{
     ViewData["Title"] = "Threshold Setting";
 }
@@ -17,457 +20,47 @@
 
       <div class="container1">
         <div class="device-list">
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
+          @foreach(var input in Model){
+            <div class="adding-device" style="height: 41rem;">
+              <figure class="device-figure">
+                <img src="@input.image" alt="Động cơ" class="device-img" height="100" />
+                <figcaption class="device-name">@input.name <span style="font-size: 1.6rem;">(id: @input.id)</span></figcaption>  
+              </figure>
+              <div class="description-group">
+                <span class="description-title">Mô tả: </span>
+                <p class="description-content">
+                  @input.thongTin
+                </p>
               </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
+              <form class="form" asp-controller="InputDevice" asp-action="SetNguong">
+                <div class="mb-5">
+                  <span class="form__label">Thiết lập: </span>
+                  <div class="threshold">
+                    <span class="threshold-max-title">Max</span>
+                    <span class="threshold-min-title">Min</span>
+                    <span class="threshold__subject"style="width: 12rem;">@input.loaiThietBi (&#8451;): </span>
+                    <input type="number" value="@input.nguongMax" class="threshold__value" name="nguongMax" />
+                    <input type="number" class="threshold__value" value="@input.nguongMin" name="nguongMin"/>
+                    <span class="threshold__subject">Thời gian kiểm tra:</span>
 
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
+                    <select  class="form__input threshold__checked-time" name="secondTime">
+                      <option value="@input.timeSet.TotalSeconds" selected>@input.timeSet.TotalMinutes phút</option>
+                      <option value="300" >5 phút</option>
+                      <option value="600" >10 phút</option>
+                      <option value="1800">30 phút</option>
+                      <option value="3600">60 phút</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
+                <input type="hidden" value="@input.id" name="id" />
+                <input type="hidden" value="@input.loaiThietBi" name="loaiThietBi" />
+                <button class="button button-primary mx-auto my-0" type="submit">
+                  Xác nhận
+                </button>
+              </form>
             </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
+          }
 
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
-          <div class="adding-device">
-            <figure class="device-figure">
-              <img src="/image/avatar.jpg" alt="Động cơ" class="device-img" height="100" />
-              <figcaption class="device-name">DHT11</figcaption>
-            </figure>
-            <div class="description-group">
-              <span class="description-title">Mô tả: </span>
-              <p class="description-content">
-                Đo nhiệt độ, độ ẩm không khí dá dá ádas
-              </p>
-            </div>
-            <form class="form">
-              <div class="mb-5">
-                <span class="form__label">Thiết lập: </span>
-                <div class="threshold">
-                  <span class="threshold-max-title">Max</span>
-                  <span class="threshold-min-title">Min</span>
-                  <span class="threshold__subject">Nhiệt độ (&#8451;): </span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Độ ẩm (%):</span>
-                  <input type="number" class="threshold__value" name="temp-max" />
-                  <input type="number" class="threshold__value" name="temp-min" />
-                  <span class="threshold__subject">Thời gian kiểm tra:</span>
-
-                  <select
-                    name="checked_time"
-                    class="form__input threshold__checked-time"
-                  >
-                    <option value="300">5 phút</option>
-                    <option value="600">10 phút</option>
-                    <option value="1800">30 phút</option>
-                    <option value="3600">1 tiếng</option>
-                  </select>
-                </div>
-              </div>
-              <button class="button button-primary mx-auto my-0">
-                Xác nhận
-              </button>
-            </form>
-          </div>
         </div>
       </div>
     </section>

@@ -31,7 +31,6 @@ namespace SmartFarm
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
             // Add Identity
             services.AddIdentity<Customer, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<AppDbContext>()
@@ -43,6 +42,8 @@ namespace SmartFarm
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<SignInManager<Customer>, SignInManager<Customer>>();
             services.AddTransient<UserManager<Customer>, UserManager<Customer>>();
+            services.AddTransient<IOutputService,OutputService>();
+            services.AddTransient<IInputService,InputService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
