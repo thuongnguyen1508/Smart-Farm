@@ -299,13 +299,26 @@ body {
     background-color: red;
     display: inline-block;
 }
-.LoginUser {
-    left: 5px !important;
-    font-size: 20px !important;
-    --text-color: red !important;
-    text-decoration-line: none !important;
+
+.nav-empty__avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transform: all 0.2s;
 }
-.LoginUser:hover {
-    --text-color: blue !important;
-    text-decoration-line: none !important;
+
+.nav-empty__link {
+    font-size: 2rem;
+    margin-left: 1rem;
+    text-decoration: none !important;
+    color: black;
+}
+
+.nav-empty:hover .nav-empty__avatar {
+    border: 2px solid white;
+}
+
+.nav-empty:hover .nav-empty__link {
+    color: white;
 }
