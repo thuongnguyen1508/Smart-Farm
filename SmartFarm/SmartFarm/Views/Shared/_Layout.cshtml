@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SmartFarm</title>
     <link rel="stylesheet" type="text/css" href="/css/site.css" />
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -46,8 +45,18 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <partial name="_LoginPartial" />
-
+        <div class="dropdown align-self-stretch d-block d-md-none">
+          <div
+            class="dropdown-toggle nav-user"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="nav-user__avatar">
+              <img src="/image/avatar.jpg" alt="User avatar" />
+            </span>
+            <span class="nav-user__name">Vu Tran</span>
+          </div>
           <ul class="navbar-nav me-auto">
               <li class="nav-item nav__item">
                   <a class="nav-link nav__link" aria-current="page" href="@Url.Action("Home","Home")">Trang chủ</a>

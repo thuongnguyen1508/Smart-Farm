@@ -28,3 +28,14 @@
         height: 5px;
         background-color: white;
     }
+.pb-3 {
+        padding-bottom: 0rem !important;
+       }
+.home{
+    margin-top: 6rem;
+}
+@media (max-width: 767.98px) {
+    .home{
+    margin-top: 0rem;
+}
+}
