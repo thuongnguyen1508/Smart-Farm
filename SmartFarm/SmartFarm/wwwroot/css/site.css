@@ -299,3 +299,26 @@ body {
     background-color: red;
     display: inline-block;
 }
+
+.nav-empty__avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transform: all 0.2s;
+}
+
+.nav-empty__link {
+    font-size: 2rem;
+    margin-left: 1rem;
+    text-decoration: none !important;
+    color: black;
+}
+
+.nav-empty:hover .nav-empty__avatar {
+    border: 2px solid white;
+}
+
+.nav-empty:hover .nav-empty__link {
+    color: white;
+}
