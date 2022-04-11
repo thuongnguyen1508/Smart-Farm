@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartFarm.Data;
 
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220410071243_updateAuto1")]
+    partial class updateAuto1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,7 +245,7 @@ namespace SmartFarm.Migrations
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-                        
+
                     b.Property<string>("Loai")
                         .HasColumnType("nvarchar(max)");
 

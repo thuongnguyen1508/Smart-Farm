@@ -30,7 +30,9 @@ namespace SmartFarm
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient(typeof(OutputService),typeof(OutputService));
+
+            services.AddTransient<IOutputService,OutputService>();
+            services.AddTransient<IInputService,InputService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

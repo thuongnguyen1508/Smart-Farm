@@ -1,5 +1,9 @@
 (() => {
   // *****************Variables*****************
+  let user_Adafruit1={
+    aIO_key:"aio_pTPl73Wt5Q7shwXH52QAbVHvDYSR",
+    Name:"luucongdinh"
+  }
   let max_threshold = 80,
     min_threshold = 30;
   const MONTHS = [
@@ -16,13 +20,11 @@
     "Tháng 11",
     "Tháng 12",
   ];
-  var user_Adafruit={
-    aIO_key:"aio_BILv55CqqksId70O5V4j7bpi01iX",
-    userName:"luucongdinh"
-  }
+
   const dataGroups = MONTHS.map((el) => {
     return { month: el, maxNumber: 0, minNumber: 0, number: 0 };
   });
+  
   //   console.log(dataGroups);
   const year = 2022;
   let fromDate = new Date(`January 01, ${year}`);
@@ -30,9 +32,9 @@
 
   //   **************DISPLAY CHART*****************
   getDataAdafruitInInterval(
-    "aio_BILv55CqqksId70O5V4j7bpi01iX",
-    "luucongdinh",
-    "dndn-temp",
+    user_Adafruit1.aIO_key,
+    user_Adafruit1.Name,
+    document.querySelector('#feed').getAttribute("value"),
     1,
     fromDate,
     toDate
@@ -99,6 +101,6 @@
       },
     };
     // console.log(2);
-    const myChart = new Chart(document.getElementById("myChart2"), config);
+    const myChart2 = new Chart(document.getElementById("myChart2"), config);
   });
 })();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SmartFarm.Data.Entities
 {
@@ -13,7 +14,7 @@ namespace SmartFarm.Data.Entities
         public string ViTriDat { get; set; }
         public string ThongTin { get; set; }
         public Farm Farm { get; set; }
-        public Input Input { get; set; }
+        public List<Input> Input { get; set; }
         public Output Output { get; set; }
     }
 }
