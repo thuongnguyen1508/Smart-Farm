@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SmartFarm.Models;
-using SmartFarm.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,13 +11,11 @@ namespace SmartFarm.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICustomerService _customerService;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, ICustomerService customerService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _customerService = customerService;
         }
 
         public IActionResult Index(int a)
@@ -40,60 +37,17 @@ namespace SmartFarm.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult InforUser(string UserName)
+        public IActionResult InforUser()
         {
-            var user = _customerService.InforUser(UserName);
-            return View(user);
-        }
-        public IActionResult PostEditAccount(UserInforViewModel account)
-        {
-            _customerService.PostEditAccount(account);
-            return RedirectToAction("InforUser", "Home");
+            return View();
         }
         public IActionResult ManageDevice()
         {
             return View();
         }
-        [HttpGet("/Login")]
         public IActionResult Login()
         {
-            return View(new LoginViewModel());
-        }
-        [HttpPost("/Login")]
-        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(loginViewModel);
-            }
-
-            var loginSucess = await _customerService.LoginAsync(loginViewModel.UserName, loginViewModel.Password);
-
-            if (!loginSucess)
-            {
-                loginViewModel.ErrorMessage = "Tài khoản không tồn tại";
-                return View(loginViewModel);
-            }
-
-            return RedirectToAction("Home");
-        }
-        public async Task<IActionResult> Logout()
-        {
-            await _customerService.SignOutAsync();
-            return RedirectToAction("Index");
-        }
-        public async Task<IActionResult> PostPassword(UserInforViewModel account)
-        {
-            if (account.Password != account.RePassword)
-            {
-                return RedirectToAction("InforUser", "Home");
-            }
-            var user = await _customerService.PostPassword(account);
-            if (user == false)
-            {
-                RedirectToAction("InforUser", "Home");
-            }
-            return RedirectToAction("Home");
+            return View();
         }
     }
 }

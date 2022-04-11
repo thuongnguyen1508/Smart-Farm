@@ -4,7 +4,6 @@
 @section CustomCss{
     <link rel="stylesheet" type="text/css" href="/css/inforUser.css" />
 }
-@model EditUserViewModel
 <!-- ***************** CONTENT ************************ -->
     <section class="section-user">
       <div class="row">
@@ -12,105 +11,130 @@
           <figure class="user__quicki4">
             <img src="/image/avatar.jpg" alt="user avatar" />
             <figcaption class="user__quicki4-details">
-              <span class="user__quicki4-gmail">@Model.Email</span>
+              <h2 class="heading-2 user__quicki4-name">Xoos cover</h2>
+              <span class="user__quicki4-gmail">xoos@gmail.com</span>
             </figcaption>
           </figure>
         </div>
         <div class="col-12 col-md-8">
           <div class="user__in4-container">
+            <h1 class="heading-2 text-center mb-4">Đổi ảnh đại diện</h1>
+            <form class="form mb-4">
+              <div class="form__group">
+                <label for="password" class="form__label">Ảnh</label>
+                <div class="position-relative">
+                  <input type="file" accept=".jpg, .png" style="height:50px"/>
+                  <img src="#" class="file_img" width="150" height="100" alt="Avatar"/>
+                </div>
+              </div>
+              <br>
+              <div class="d-flex mb-5">
+                <button class="button me-5">Cập nhật</button>
+              </div>
+            </form>
             <h1 class="heading-2 text-center mb-4">Thông tin cá nhân</h1>
-            <form class="form mb-4" asp-controller="Admin" asp-action="PostEditUser">
-                <input type="hidden" name="account.UserName" value="@Model.UserName" />
-                <div class="form__group">
-                    <label for="lastName" class="form__label">Họ</label>
-                    <div class="position-relative">
-                        <svg class="form__icon">
-                            <use xlink:href="/image/spirite.svg#icon-users"></use>
-                        </svg>
-                        <input type="text"
-                               id="lastName"
-                               name="account.Ho"
-                               class="form__input"
-                               value="@Model.Ho" />
-                    </div>
+            <form class="form mb-4">
+              <div class="form__group">
+                <label for="lastName" class="form__label">Họ</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    class="form__input"
+                    value="Trần Lương"
+                  />
                 </div>
-                <div class="form__group">
-                    <label for="firstName" class="form__label">Tên</label>
-                    <div class="position-relative">
-                        <svg class="form__icon">
-                            <use xlink:href="/image/spirite.svg#icon-users"></use>
-                        </svg>
-                        <input type="text"
-                               id="firstName"
-                               name="account.Ten"
-                               class="form__input"
-                               value="@Model.Ten" />
-                    </div>
+              </div>
+              <div class="form__group">
+                <label for="firstName" class="form__label">Tên</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    class="form__input"
+                    value="Vũ"
+                  />
                 </div>
-                <div class="form__group">
-                    <label for="email" class="form__label">Email</label>
-                    <div class="position-relative">
-                        <svg class="form__icon">
-                            <use xlink:href="/image/spirite.svg#icon-users"></use>
-                        </svg>
-                        <input type="email"
-                               id="email"
-                               name="account.Email"
-                               class="form__input"
-                               value="@Model.Email" />
-                    </div>
+              </div>
+              <div class="form__group">
+                <label for="email" class="form__label">Email</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form__input"
+                    value="vu.tran2801@hcmut.edu.vn"
+                  />
                 </div>
-                <div class="form__group">
-                    <label for="address" class="form__label">Địa chỉ</label>
-                    <div class="position-relative">
-                        <svg class="form__icon">
-                            <use xlink:href="/image/spirite.svg#icon-users"></use>
-                        </svg>
-                        <input type="text"
-                               id="address"
-                               name="account.Address"
-                               class="form__input"
-                               value="@Model.Address" />
-                    </div>
+              </div>
+              <div class="form__group">
+                <label for="address" class="form__label">Địa chỉ</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    class="form__input"
+                    value="12 Lê Đình Phương Nha Trang"
+                  />
                 </div>
-                <div class="d-flex mb-5">
-                    <button type="submit" class="button me-5">Cập nhật</button>
-                    <button class="button">Hủy</button>
-                </div>
+              </div>
             </form>
-            
+            <div class="d-flex mb-5">
+              <button class="button me-5">Cập nhật</button>
+              <button class="button">Hủy</button>
+            </div>
             <h1 class="heading-2 text-center mb-4">Đổi mật khẩu</h1>
-            <form class="form mb-4" asp-controller="Admin" asp-action="PostPassword">
-                <input type="hidden" name="account.UserName" value="@Model.UserName" />
-                <div class="form__group">
-                    <label for="password" class="form__label">Mật khẩu mới</label>
-                    <div class="position-relative">
-                        <svg class="form__icon">
-                            <use xlink:href="/image/spirite.svg#icon-users"></use>
-                        </svg>
-                        <input type="password"
-                               id="password"
-                               name="account.Password"
-                               class="form__input"
-                               value="@Model.Password" />
-                    </div>
+            <form class="form mb-4">
+              <div class="form__group">
+                <label for="password" class="form__label">Mật khẩu mới</label>
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form__input"
+                    value="passwordtest"
+                  />
                 </div>
-                <div class="form__group">
-                    <label for="passwordConfirm" class="form__label">Xác nhận mật khẩu mới</label>
-                    <div class="position-relative">
-                        <svg class="form__icon">
-                            <use xlink:href="/image/spirite.svg#icon-users"></use>
-                        </svg>
-                        <input type="password"
-                               id="passwordConfirm"
-                               name="account.Repassword"
-                               class="form__input"
-                               value="@Model.Password" />
-                    </div>
+              </div>
+              <div class="form__group">
+                <label for="passwordConfirm" class="form__label"
+                  >Xác nhận mật khẩu mới</label
+                >
+                <div class="position-relative">
+                  <svg class="form__icon">
+                    <use xlink:href="/image/spirite.svg#icon-users"></use>
+                  </svg>
+                  <input
+                    type="password"
+                    id="passwordConfirm"
+                    name="passwordConfirm"
+                    class="form__input"
+                    value="passwordtest"
+                  />
                 </div>
-                <button class="button" type="submit">Cập nhật</button>
+              </div>
             </form>
-            
+            <button class="button">Cập nhật</button>
           </div>
         </div>
       </div>

@@ -7,14 +7,22 @@ namespace SmartFarm.Controllers
 {
     public class OutputDeviceController : Controller
     {
-        private readonly OutputService _output;
-        public OutputDeviceController(OutputService output){
+        private readonly IOutputService _output;
+        public OutputDeviceController(IOutputService output){
             _output = output;
         }
-        public async Task<IActionResult> ControlDeviceAsync()
+        [HttpGet]
+        public async Task<IActionResult> ControlDevice()
         {
             var outputs= await _output.GetOutputAsync();
             return View(outputs);
+        }
+        [HttpPost]
+
+        public IActionResult UpdateAutoController(int i,int id)
+        {
+            _output.SetAutOutput(i,id);
+           return RedirectToAction("ControlDevice"); 
         }
     }
 }
