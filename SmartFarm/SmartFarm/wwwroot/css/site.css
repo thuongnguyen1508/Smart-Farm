@@ -86,7 +86,9 @@
         background-color: transparent !important;
         color: #20b608 !important;
     }
-
+.fixed-top{
+    position: fixed;
+}
 .nav-user__dropdown > *:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -115,6 +117,9 @@
     .nav-user {
         justify-content: center;
         padding: 2rem 0;
+    }
+    .fixed-top{
+        position: relative !important;
     }
 }
 
