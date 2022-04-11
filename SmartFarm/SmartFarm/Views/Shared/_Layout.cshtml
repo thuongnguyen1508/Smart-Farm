@@ -46,12 +46,40 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <partial name="_LoginPartial" />
+        <div class="dropdown align-self-stretch d-block d-md-none">
+          <div
+            class="dropdown-toggle nav-user"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="nav-user__avatar">
+              <img src="/images/avatar.jpg" alt="User avatar" />
+            </span>
+            <span class="nav-user__name">Vu Tran</span>
+          </div>
 
-          <ul class="navbar-nav me-auto">
-              <li class="nav-item nav__item">
-                  <a class="nav-link nav__link" aria-current="page" href="@Url.Action("Home","Home")">Trang chủ</a>
-              </li>
+          <div
+            class="dropdown-menu nav-user__dropdown"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("InforUser","Home")"
+              >Thông tin cá nhân</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDeivce","Home")"
+              >Quản lý thiết bị</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Login","Home")"
+              >Đăng xuất</a
+            >
+          </div>
+        </div>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item nav__item">
+            <a class="nav-link nav__link" aria-current="page" href="@Url.Action("Home","Home")"
+              >Trang chủ</a
+            >
+          </li>
 
           <li class="nav-item nav__item">
             <a class="nav-link nav__link" href="@Url.Action("controlDevice","OutputDevice")">Điều khiển</a>
@@ -62,7 +90,6 @@
           <li class="nav-item nav__item">
             <a class="nav-link nav__link" href="@Url.Action("Thonke","Statistic")">Xem thống kê</a>
           </li>
-          <partial name="_LoginPartiall" />
         </ul>
         <div class="dropdown align-self-stretch d-none d-md-inline-block">
           <div

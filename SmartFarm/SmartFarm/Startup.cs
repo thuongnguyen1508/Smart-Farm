@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using SmartFarm.Data;
 using SmartFarm.Services;
-using Microsoft.AspNetCore.Identity;
-using SmartFarm.Data.Entities;
 
 namespace SmartFarm
 {
@@ -24,22 +26,13 @@ namespace SmartFarm
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddTransient<IOutputService,OutputService>();
             services.AddTransient<IInputService,InputService>();
-            // Add Identity
-            services.AddIdentity<Customer, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-            services.AddTransient(typeof(OutputService),typeof(OutputService));
-            services.AddTransient<ICustomerService, CustomerService>();
-            services.AddTransient<IAdminService, AdminService>();
-            services.AddTransient<SignInManager<Customer>, SignInManager<Customer>>();
-            services.AddTransient<UserManager<Customer>, UserManager<Customer>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +60,7 @@ namespace SmartFarm
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Home}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
