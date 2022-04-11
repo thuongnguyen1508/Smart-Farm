@@ -30,7 +30,6 @@ namespace SmartFarm
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddTransient<IOutputService,OutputService>();
             services.AddTransient<IInputService,InputService>();
         }
