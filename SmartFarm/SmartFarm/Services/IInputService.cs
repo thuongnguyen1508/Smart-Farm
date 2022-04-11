@@ -8,5 +8,6 @@ namespace SmartFarm.Services
     {
         Task<List<InputModel>> GetInputsAsync();
         Task<InputModel> GetInputIdAsync(int id);
+         void UpdateSetNguong(InputModel input);
     }
 }

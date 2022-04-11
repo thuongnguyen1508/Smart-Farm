@@ -514,7 +514,7 @@ th {
 
 .adding-device .threshold__value {
     width: 5rem;
-    padding-left: 0.2em;
+    padding: 0em !important;
     font-size: 1.6rem;
 }
 

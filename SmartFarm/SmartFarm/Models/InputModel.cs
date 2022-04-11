@@ -12,6 +12,9 @@ namespace SmartFarm.Models
         public string thongTin { get; set; }
         public string viTri { get; set; }
         public String image{ get; set;}
-        public bool trangThai{ get; set;}
+        public TimeSpan timeSet { get;  set; }
+        public float nguongMax{get; set; }
+        public float nguongMin{get; set; }
+        public int secondTime { get; set; }
     }
 }

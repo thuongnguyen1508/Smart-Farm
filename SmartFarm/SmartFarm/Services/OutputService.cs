@@ -20,6 +20,7 @@ namespace SmartFarm.Services
             var result = await (from o in _context.Output
                                 join e in _context.Equipment on o.Id equals e.Id
                                 join io in _context.InputOutput on o.Id equals io.IdOutput
+                                where e.TrangThai==true
                                 select new OutputModel
                                 {
                                     id = o.Id,
