@@ -14,6 +14,10 @@ namespace SmartFarm.Controllers
         [HttpGet]
         public async Task<IActionResult> ControlDevice()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var outputs= await _output.GetOutputAsync();
             return View(outputs);
         }
