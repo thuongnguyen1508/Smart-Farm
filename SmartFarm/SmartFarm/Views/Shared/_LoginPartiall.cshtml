@@ -7,18 +7,32 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="dropdown align-self-stretch d-none d-md-inline-block">
-        <div class="dropdown-toggle nav-user"
-             id="dropdownMenuButton"
-             data-bs-toggle="dropdown"
-             aria-expanded="false">
-            <span class="nav-user__name">Xin chào @UserManager.GetUserAsync(User).Result.UserName</span>
-        </div>
+        <div class="dropdown align-self-stretch d-none d-md-inline-block">
+          <div
+            class="dropdown-toggle nav-user"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           <span class="nav-user__name" style="font-size: 1.3rem; margin-right:1rem">Xin chào: @UserManager.GetUserAsync(User).Result.UserName</span>
+            <span class="nav-user__avatar">
+              <img src="/image/avatar.jpg" alt="User avatar" />
+            </span>
+            
+          </div>
 
-        <div class="dropdown-menu nav-user__dropdown"
-             aria-labelledby="dropdownMenuButton">
+          <div
+            class="dropdown-menu nav-user__dropdown"
+            aria-labelledby="dropdownMenuButton"
+          >
             <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("InforUser","Home",new { UserName=UserManager.GetUserAsync(User).Result.UserName})">Thông tin cá nhân</a>
-            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDevice","Home")">Quản lý thiết bị</a>
-            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Logout", "Home")">Đăng xuất</a>
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDevice","Home")"
+              >Quản lý thiết bị</a
+            >
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Logout", "Home")"
+              >Đăng xuất</a
+            >
+          </div>
         </div>
     </div>
 }
@@ -31,3 +45,4 @@ else
         <a href="@Url.Action("Login", "Home")" class="nav-empty__link">Đăng nhập</a>
     </div>
 }
+         

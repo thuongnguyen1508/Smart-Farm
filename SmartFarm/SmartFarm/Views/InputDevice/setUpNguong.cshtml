@@ -8,7 +8,7 @@
     ViewData["Title"] = "Threshold Setting";
 }
 @section CustomCss{
-    <link rel="stylesheet" type="text/css" href="/css/dinhCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/threshold.css" />
 
 }
 <!-- -----------------SECTION CONTENT------------------ -->
@@ -21,7 +21,7 @@
       <div class="container1">
         <div class="device-list">
           @foreach(var input in Model){
-            <div class="adding-device" style="height: 41rem;">
+            <div class="adding-device" style="height: 45rem;width:32rem">
               <figure class="device-figure">
                 <img src="@input.image" alt="Động cơ" class="device-img" height="100" />
                 <figcaption class="device-name">@input.name <span style="font-size: 1.6rem;">(id: @input.id)</span></figcaption>  
@@ -54,7 +54,7 @@
                 </div>
                 <input type="hidden" value="@input.id" name="id" />
                 <input type="hidden" value="@input.loaiThietBi" name="loaiThietBi" />
-                <button class="button button-primary mx-auto my-0" type="submit">
+                <button class="button button-primary btn-on-bline" type="submit">
                   Xác nhận
                 </button>
               </form>

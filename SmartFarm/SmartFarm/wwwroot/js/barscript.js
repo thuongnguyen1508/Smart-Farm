@@ -1,7 +1,7 @@
 (() => {
   // *****************Variables*****************
   let user_Adafruit1={
-    aIO_key:"aio_nLlB002lwmeHVhbfLZ3Yf6WLw8nn",
+    aIO_key:"aio_zXsY84HtoYjctdBnHJoPo6U8iAkK",
     Name:"luucongdinh"
   }
   let max_threshold = 80,
