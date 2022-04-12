@@ -19,8 +19,8 @@ namespace SmartFarm.Data
             builder.Property(input => input.ThoiGianTruyXuat);
             builder.Property(input => input.FeedName);
             builder.HasOne(equipment => equipment.Equipment)
-                .WithOne(input => input.Input)
-                .HasForeignKey<Input>(input => input.Id);
+                .WithMany(input => input.Input)
+                .HasForeignKey(input => input.Id);
         }
     }
 }

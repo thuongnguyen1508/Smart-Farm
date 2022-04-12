@@ -1,4 +1,5 @@
-﻿
+﻿@using SmartFarm.Models;
+@model InputAndOutputModel
 @{
     ViewData["Title"] = "Statistic";
 }
@@ -10,39 +11,46 @@
             <div class="container py-5 px-lg-5">
                 <div class="row g-4 portfolio-container mb-4">
                     <h1>Thiết bị output</h1>
-                    @* <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="rounded overflow-hidden">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100 h-100" src="~/image/maybom.jpg" alt="">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
+                    @if(Model.Outputs!=null)
+                        {
+                        @foreach(var output in Model.Outputs){
+                        <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="rounded overflow-hidden">
+                                <div class="position-relative overflow-hidden">
+                                    <img class="img-fluid w-100 h-100" src="@output.img" alt="">
+                                    <div class="portfolio-overlay">
+                                        <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="bg-light p-4 text-center fs-3">
+                                    <p class="text-primary fw-medium mb-2">@output.name</p>
+                                    <a class="lh-base mb-0" href="@Url.Action("Output","Statistic",new { id=output.id })">Xem chi tiết</a>
                                 </div>
                             </div>
-                            <div class="bg-light p-4 text-center fs-3">
-                                <p class="text-primary fw-medium mb-2">Máy bơm</p>
-                                <a class="lh-base mb-0" href="@Url.Action("Output","Statistic")">Xem chi tiết</a>
-                            </div>
                         </div>
-                    </div> *@
+                        }
+                    }
                 </div>
 
                  <div class="row g-4 portfolio-container">
                     <h1>Thiết bị input</h1>
                     <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                        @foreach(var input in Model.Inputs){
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="~/image/nutnhandon.jpg" alt="">
+                                <img class="img-fluid w-100" src="@input.image" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="bg-light p-4 text-center fs-3">
-                                <p class="text-primary fw-medium mb-2">Nút nhấn đơn</p>
-                                <a class="lh-base mb-0" href="@Url.Action("Input","Statistic")">Xem chi tiết</a>
+                                <p class="text-primary fw-medium mb-2">@input.name</p>
+                                <a class="lh-base mb-0" href="@Url.Action("Input","Statistic",new { id=input.id })">Xem chi tiết</a>
                             </div>
                         </div>
+                        }
                     </div>
                 </div>
             </div>
