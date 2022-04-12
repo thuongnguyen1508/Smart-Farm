@@ -38,7 +38,7 @@
                   </div>
                 </div>
                 <label class="switch3">
-                  <input type="checkbox" feedName="@sp.feedName"  value="@sp.valueOpen" inputFeedName="@sp.inputOupts.feedName" time="@sp.inputOupts.timeSet.TotalSeconds" Max="@sp.inputOupts.nguongMax" Min="@sp.inputOupts.nguongMin"/>
+                  <input type="checkbox" feedName="@sp.feedName"  value="@sp.valueOpen" inputFeedName="@sp.inputOupts.feedName" time="@sp.inputOupts.timeSet.TotalSeconds" Max="@sp.inputOupts.nguongMax" Min="@sp.inputOupts.nguongMin" auto="@sp.auto1"/>
                   <div></div>
                 </label>
                 <div style="font-size: 1.8rem;font-weight: 700;color: black;grid-area: 3/1/span 1/span 1;">Tự động:</div>
@@ -60,7 +60,6 @@
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <script type="text/javascript">
-
   document.querySelectorAll(".submit").forEach((el) => {
     console.log(el.children[2].getAttribute("value"));
     el.firstElementChild.onchange= function (e) {
@@ -75,7 +74,7 @@
     else el.children[0].checked=false;
   });
   var user_Adafruit={
-      aIO_key:"aio_pTPl73Wt5Q7shwXH52QAbVHvDYSR",
+      aIO_key:"aio_nLlB002lwmeHVhbfLZ3Yf6WLw8nn",
       userName:"luucongdinh"
   };
   function requestPost(key_feed,aIO_key,userName,data){
@@ -154,7 +153,9 @@
         .catch(err => console.log(err));
     }
   document.querySelectorAll(".switch3 input").forEach((el) => {
-    setInterval(initial,el.getAttribute("time")*1000,el);
+    console.log("value",el.getAttribute("auto"))
+    if (el.getAttribute("auto")==1)
+      setInterval(initial,el.getAttribute("time")*1000,el);
   });
   document.querySelectorAll(".switch3 input").forEach((el) => {
     var dad = el.parentElement;

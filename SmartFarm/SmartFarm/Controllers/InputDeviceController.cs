@@ -16,6 +16,10 @@ namespace SmartFarm.Controllers
         [HttpGet]
         public async Task<IActionResult> SetUpNguong()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var input=await _inputService.GetInputsAsync();
             return View(input);
         }

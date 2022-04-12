@@ -3,7 +3,7 @@
 
 //*************CUSTOM variable******************* */
 let user_Adafruit={
-    aIO_key:"aio_pTPl73Wt5Q7shwXH52QAbVHvDYSR",
+    aIO_key:"aio_nLlB002lwmeHVhbfLZ3Yf6WLw8nn",
   Name:"luucongdinh"
 }
 var nameDevice=document.querySelector('#feed').getAttribute("name");
