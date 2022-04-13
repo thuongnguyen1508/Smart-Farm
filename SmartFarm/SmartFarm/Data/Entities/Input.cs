@@ -9,7 +9,6 @@ namespace SmartFarm.Data.Entities
     public class Input
     {
         public int Id { get; set; }
-        [Index(IsUnique=false)]
         public string LoaiThietBi { get; set; }
         public float Max { get; set; }
         public float Min { get; set; }

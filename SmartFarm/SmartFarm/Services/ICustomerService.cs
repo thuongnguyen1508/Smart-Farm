@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SmartFarm.Services
@@ -13,5 +14,7 @@ namespace SmartFarm.Services
         UserInforViewModel InforUser(string UserName);
         void PostEditAccount(UserInforViewModel account);
         Task<bool> PostPassword(UserInforViewModel account);
+        Task<List<EquipmentViewModel>> GetEquipmentAsync(int idFarm);
+        Task InsertEquipment(InsertEquipmentViewModel equipment, ClaimsPrincipal user);
     }
 }

@@ -31,12 +31,14 @@ namespace SmartFarm
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             // Add Identity
             services.AddIdentity<Customer, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            // Register Dependence Injection (DI)
             services.AddTransient(typeof(OutputService),typeof(OutputService));
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IAdminService, AdminService>();
