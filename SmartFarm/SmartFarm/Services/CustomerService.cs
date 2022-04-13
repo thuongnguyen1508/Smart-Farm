@@ -49,7 +49,8 @@ namespace SmartFarm.Services
                                   Ho = a.Ho,
                                   Ten = a.Ten,
                                   Address = a.DiaChi,
-                                  Email = a.Email
+                                  Email = a.Email,
+                                  ImgUrl=a.Image
                               }).FirstOrDefault();
             return user;
         }
@@ -116,11 +117,18 @@ namespace SmartFarm.Services
                 _context.SaveChanges();
                 var IdOutput = (from i in _context.Equipment
                                select i.Id).Max();
-                var valueOpen = (from v in _context.Output
+                var valueOpen = -1;
+                var countValue = (from v in _context.Output
+                                  join e in _context.Equipment on v.Id equals e.Id
+                                  where e.ThuocVeTrangTrai == IdFarm
+                                  select v.ValueOpen).Count();
+                if(countValue>0)
+                {
+                    valueOpen = (from v in _context.Output
                                  join e in _context.Equipment on v.Id equals e.Id
-                                 where e.ThuocVeTrangTrai==IdFarm
+                                 where e.ThuocVeTrangTrai == IdFarm
                                  select v.ValueOpen).Max();
-
+                }
                 var newOutput = new Output()
                 {
                     Id = IdOutput,

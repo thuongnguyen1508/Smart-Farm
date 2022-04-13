@@ -275,7 +275,7 @@
     margin-bottom: 10px;
 }
 .popup2 {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: start;
     flex-wrap: wrap;

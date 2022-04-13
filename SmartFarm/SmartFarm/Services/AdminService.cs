@@ -77,7 +77,8 @@ namespace SmartFarm.Services
             var user = await (from a in _context.Customer
                               where a.UserName == UserName
                               select new EditUserViewModel
-                              {
+                              { 
+                                  ImgUrl = a.Image,
                                   UserName = a.UserName,
                                   Ho = a.Ho,
                                   Ten = a.Ten,
