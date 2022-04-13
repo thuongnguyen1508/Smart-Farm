@@ -278,14 +278,14 @@ body {
 }
 /* ------------BUTTON--------------- */
 .button {
-    border: none;
-    background-color: #025e11;
-    color: white;
-    padding: 1rem 2rem;
-    font-size: 1.6rem;
-    border-radius: 5px;
-    display: block;
-    transition: all 0.2s;
+    border: none !important;
+    background-color: #025e11 !important;
+    color: white !important;
+    padding: 1rem 2rem !important;
+    font-size: 1.6rem !important;
+    border-radius: 5px !important;
+    display: block !important;
+    transition: all 0.2s !important;
 }
 
     .button:hover {
@@ -326,4 +326,10 @@ body {
 
 .nav-empty:hover .nav-empty__link {
     color: white;
+}
+
+.statistic-icon {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
 }
