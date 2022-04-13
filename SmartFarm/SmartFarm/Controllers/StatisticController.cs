@@ -19,6 +19,10 @@ namespace SmartFarm.Controllers
         }
         public async Task<IActionResult> ThonkeAsync()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var input=await _inputService.GetInputsAsync();
             InputAndOutputModel result=new InputAndOutputModel();
             result.Inputs=input;
@@ -27,14 +31,21 @@ namespace SmartFarm.Controllers
         [HttpGet]
         public async Task<IActionResult> InputAsync(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var input=await _inputService.GetInputIdAsync(id);
-
             return View(input);
         }
 
 
         public IActionResult Output()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
     }

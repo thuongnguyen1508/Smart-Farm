@@ -20,6 +20,7 @@ namespace SmartFarm.Data
             builder.Property(customer => customer.SoHuuTrangTrai);
             builder.Property(customer => customer.VaiTro);
             builder.Property(customer => customer.TrangThai);
+            builder.Property(customer => customer.Image);
             builder.HasOne(farm => farm.Farm)
                 .WithMany(customer => customer.Customers)
                 .HasForeignKey(customer=>customer.SoHuuTrangTrai);

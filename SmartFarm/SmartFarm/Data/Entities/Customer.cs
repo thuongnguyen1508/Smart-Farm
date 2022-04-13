@@ -14,6 +14,8 @@ namespace SmartFarm.Data.Entities
         public int SoHuuTrangTrai { get; set; }
         public string VaiTro { get; set; }
         public bool TrangThai { get; set; }
+        public string Image { get; set; }
         public Farm Farm { get; set; }
+        
     }
 }

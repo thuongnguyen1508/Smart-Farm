@@ -57,12 +57,24 @@
                     </div>
                 </div>
                 <div><h1 style="font-weight:700;font-size:35px">Biểu đồ</h1></div>
-                <div class="section-content" id="chart">
-                    <div style="width: 100%">
-                    <canvas id="myChart"></canvas>
+                <div class="section-content" id="type_chart">
+                    <div class="chart_">
+                        <select id="option_chart" >
+                            <option value="1">Biểu đồ biểu diễn sự biến thiên thông số của thiết bị</option>
+                            <option value="2">Biểu đồ so sánh số lần vượt ngưỡng</option>
+                        </select>
+                        <label class="from">Từ:
+                        <input type="date"
+                            min="2022-03-01" max="" class="time _from">
+                        </label>
+                        <label class="to">Đến:
+                        <input type="date"
+                            min="2022-03-01" max="" class="time _to">
+                        </label>
+                        <button class="button button-primary btn-on-bline" type="submit">Xác nhận</button>
                     </div>
                     <div style="width: 100%">
-                    <canvas id="myChart1"></canvas>
+                    <canvas id="myChart"></canvas>
                     </div>
                     <div style="width: 100%">
                     <canvas id="myChart2"></canvas>
@@ -111,19 +123,51 @@
 </div>
 @section Scripts{
     <script type="text/javascript">
-    document.querySelector('#chart').style.display = 'none';
+    var d=new Date();
+    var date=d.getDate();
+    var year=d.getFullYear();
+    var month=d.getMonth()+1;
+    if (month<10) month='0'+month;
+    var value=year+'-'+month+'-'+date;
+    console.log(document.querySelector('.time._to').value);
+    document.querySelector('.time._to').max=value;
+    document.querySelector('.time._to').value=value;
+    document.querySelector('.time._from').max=value;
+    document.querySelector('.time._from').value=value;
+    document.querySelector('.time._to').onchange=function(e){
+        console.log("time to",e.target.value)
+        document.querySelector('.time._from').max=e.target.value;
+    }
+    document.querySelector('.time._from').onchange=function(e){
+        document.querySelector('.time._to').min=e.target.value;
+    }
+    document.querySelector('#type_chart').style.display = 'none';
     document.querySelector('input[type="button"]').onclick=function(e) {
         if (document.querySelector('select').value=="2") 
         {  
-            document.querySelector('#chart').style.display = 'block';
+            document.querySelector('#type_chart').style.display = 'block';
             document.querySelector('#table').style.display = 'none';
         }
         else 
         {
-            document.querySelector('#chart').style.display = 'none';
+            document.querySelector('#type_chart').style.display = 'none';
             document.querySelector('#table').style.display = 'block';
         }
     };
+    document.getElementById("myChart2").style.display="none";
+    document.querySelector('#option_chart').addEventListener("change", (e)=>{
+            if(e.target.value==1) 
+            {
+                document.getElementById("myChart2").style.display="none";
+                document.getElementById("myChart").style.display="block";
+            }
+            else 
+            {
+                document.getElementById("myChart2").style.display="block";
+                document.getElementById("myChart").style.display="none";
+            }
+
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script
@@ -132,10 +176,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-
     <script src="/js/linescript.js"></script>
     <script src="/js/barscript.js"></script>
-
 }
 
 

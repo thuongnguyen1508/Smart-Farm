@@ -39,7 +39,6 @@ namespace SmartFarm
             services.AddControllersWithViews();
             services.AddRazorPages();
             // Register Dependence Injection (DI)
-            services.AddTransient(typeof(OutputService),typeof(OutputService));
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<SignInManager<Customer>, SignInManager<Customer>>();
