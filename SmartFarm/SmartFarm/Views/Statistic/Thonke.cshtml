@@ -1,61 +1,167 @@
-﻿@using SmartFarm.Models;
-@model InputAndOutputModel
-@{
-    ViewData["Title"] = "Statistic";
-}
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @section CustomCss{
-    <link rel="stylesheet" type="text/css" href="/css/statistic.css" />
+    <link rel ="stylesheet" type="text/css" href="/css//manageDevice.css"/>
 }
-<div class="section" style="background-color:#EBFCF2;padding-top: 6rem;">
-        <div class="container-xxl py-5" style="padding-top:0px !important">
-            <div class="container py-5 px-lg-5">
-                <div class="row g-4 portfolio-container mb-4">
-                    <h1>Thiết bị output</h1>
-                    @if(Model.Outputs!=null)
+@model List<EquipmentViewModel>
+ <section class="section-content">
+      <h1 class="heading-1 mb-5 d-flex align-items-center">
+        <svg class="heading__icon me-4">
+          <use xlink:href="/image/spirite.svg#icon-folder-open"></use>
+        </svg>
+        Quản lý thiết bị
+      </h1>
+      <div class="row">
+        <div
+          class="col-lg-4 col-12 d-flex d-lg-block justify-content-between mb-4 mb-lg-0"
+        >
+          <figure class="map">
+            <figcaption class="map__unit">(&#13217;)</figcaption>
+            <img src="/image/map.png" class="img-fluid" alt="map image" />
+          </figure>
+         @* <div class="adding-device">
+            <h2 class="heading-2 text-center mb-4">Thêm thiết bị</h2>
+
+            <form class="form" asp-action="InsertEquipment" asp-controller="Home">
+                <div class="mb-3 form-group">
+                    <label for="types" class="form__label">Loại:</label>
+                    <select name="equipment.loaiThietBi" id="types" class="form__input" onchange="myFunction()">
+                        <option value="output">Output</option>
+                        <option value="input">Input</option>
+                    </select>
+                </div>
+                <div class="mb-3 popup1">
+                    <label for="devices" class="form__label">Thiết bị:</label>
+                    <select name="equipment.nameIn" id="devices" class="form__input">
+                        <option value="DHT11-Độ ẩm">DHT11-Độ ẩm</option>
+                        <option value="DHT11-Nhiệt độ">DHT11-Nhiệt độ</option>
+                        <option value="Cảm biến ánh sáng">Cảm biến ánh sáng</option>
+                        <option value="Cảm biến độ ẩm đất">Cảm biến độ ẩm đất</option>
+                        <option value="Cảm biến âm thanh">Cảm biến âm thanh</option>
+                    </select>
+                </div>
+                <div class="mb-3 popup2">
+                    <label for="devices" class="form__label">Thiết bị:</label>
+                    <select name="equipment.nameOut" id="devices" class="form__input">
+                        <option value="LED đơn 2 màu">LED đơn 2 màu</option>
+                        <option value="Loa Buzzer">Loa Buzzer</option>
+                        <option value="Máy Bơm">Máy Bơm</option>
+                    </select>
+                </div>
+                <div class="popup" id="output">
+                    <label for="outputs" class="form__label">Output kết nối:</label>
+                    <select name="equipment.idOutput" id="outputs" class="form__input">
+                        @foreach (var o in Model)
                         {
-                        @foreach(var output in Model.Outputs){
-                        <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="rounded overflow-hidden">
-                                <div class="position-relative overflow-hidden">
-                                    <img class="img-fluid w-100 h-100" src="@output.img" alt="">
-                                    <div class="portfolio-overlay">
-                                        <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                        <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="bg-light p-4 text-center fs-3">
-                                    <p class="text-primary fw-medium mb-2">@output.name</p>
-                                    <a class="lh-base mb-0" href="@Url.Action("Output","Statistic",new { id=output.id })">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
+                            @if (o.loaiThietBi == "output")
+                            {
+                                <option value=@o.id>@o.name (@o.viTri)</option>
+                            }
                         }
-                    }
+                    </select>
                 </div>
 
-                 <div class="row g-4 portfolio-container">
-                    <h1>Thiết bị input</h1>
-                    <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                        @foreach(var input in Model.Inputs){
-                        <div class="rounded overflow-hidden">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="@input.image" alt="">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="bg-light p-4 text-center fs-3">
-                                <p class="text-primary fw-medium mb-2">@input.name</p>
-                                <a class="lh-base mb-0" href="@Url.Action("Input","Statistic",new { id=input.id })">Xem chi tiết</a>
-                            </div>
-                        </div>
-                        }
+                <div class="mb-3 form-group">
+                    <span class="form__label">Vị trí: </span>
+                    <div class="coordinate-group">
+                        <label for="coordinate-x">X</label>
+                        <input type="text"
+                               name="equipment.X" />
+                    </div>
+                    <div class="coordinate-group">
+                        <label for="coordinate-y">Y</label>
+                        <input type="text"
+                               name="equipment.Y" />
                     </div>
                 </div>
-            </div>
+                <div class="mb-3 form-group">
+                    <label class="form__label">Thông tin:</label>
+                    <input class="form__input" type="text" name="equipment.thongTin" />
+                </div>
+                <div class="mb-3 form-group">
+                    <label class="form__label">ImgUrl:</label>
+                    <input class="form__input" type="text" name="equipment.image" />
+                </div>
+                <button class="button button-primary mx-auto my-0" type="submit">Thêm</button>
+            </form>
+          </div>*@
         </div>
-        <!-- Service End -->
-    <!-- /container -->
-</div>
 
+        <!-- -------------DEVICE LISTING--------------- -->
+        <div class="col-lg-8 col-12">
+          <div class="devices">
+            <div class="device-output mb-5">
+              <h2 class="heading-2 device-type mb-5">Output</h2>
+              <div class="device-container">
+                  @foreach (var e in Model)
+                  {
+                      @if (e.loaiThietBi == "output")
+                      {
+                          <figure class="device__figure">
+                              <img src="@e.image"
+                                   alt="device image"
+                                   class="device__img mb-3" />
+
+                              <div class="device__name">@e.name</div>
+                              <div class="device__coordinates">
+                                  <span class="device__coordinate-x">@e.viTri</span>
+                              </div>
+                            <div>
+                                <a class="lh-base mb-0" href="@Url.Action("Output","Statistic",new { id=e.id })">Xem chi tiết</a>
+                            </div>
+                          </figure>
+                      }
+
+                  }
+
+              </div>
+            </div>
+            <div class="device-output">
+              <h2 class="heading-2 device-type mb-5">Input</h2>
+              <div class="device-container">
+                  @foreach (var e in Model)
+                  {
+                      @if (e.loaiThietBi == "input")
+                      {
+                          <figure class="device__figure">
+                              <img src="@e.image"
+                                   alt="device image"
+                                   class="device__img mb-3" />
+
+                              <div class="device__name">@e.name</div>
+                              <div class="device__coordinates">
+                                  @e.viTri
+                              </div>
+                              <div>
+                                  <a class="lh-base mb-0" href="@Url.Action("Input","Statistic",new { id=e.id })">Xem chi tiết</a>
+                              </div>
+                          </figure>
+                      }
+
+                  }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+@section Scripts{
+<script>
+    let modal = document.querySelector(".popup");
+    let modal1 = document.querySelector(".popup1");
+    let modal2 = document.querySelector(".popup2");
+    function myFunction() {
+        var x = document.getElementById("types").value;
+        if (x == "input") {
+            modal.style.display = "flex";
+            modal1.style.display = "flex";
+            modal2.style.display = "none";
+        } else if (x == "output"){
+            modal2.style.display = "flex";
+            modal1.style.display = "none";
+            modal.style.display = "none";
+        }
+    }
+</script>
+}

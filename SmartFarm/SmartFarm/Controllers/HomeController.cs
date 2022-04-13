@@ -54,7 +54,7 @@ namespace SmartFarm.Controllers
             _customerService.PostEditAccount(account);
             return RedirectToAction("InforUser", "Home");
         }
-        public async Task<IActionResult> ManageDevice(int idFarm)
+        public async Task<IActionResult> ManageDevice(int idFarm=1)
         {
             var equipment = await _customerService.GetEquipmentAsync(idFarm);
             return View(equipment);
