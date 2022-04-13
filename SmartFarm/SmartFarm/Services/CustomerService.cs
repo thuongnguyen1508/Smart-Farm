@@ -6,6 +6,7 @@ using SmartFarm.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SmartFarm.Services
@@ -72,6 +73,96 @@ namespace SmartFarm.Services
             var user = await _userManager.FindByIdAsync(customerID);
             var result = await _userManager.ChangePasswordAsync(user, account.CurentPassword, account.Password);
             return result.Succeeded;
+        }
+        public async Task<List<EquipmentViewModel>> GetEquipmentAsync(int idFarm)
+        {
+            var equip = await (from e in _context.Equipment
+                               where e.ThuocVeTrangTrai==idFarm
+                                   select new EquipmentViewModel 
+                                   {
+                                       id=e.Id,
+                                       image=e.Image,
+                                       loaiThietBi=e.Loai,
+                                       name=e.Ten,
+                                       thongTin=e.ThongTin,
+                                       thuocVeTrangTrai=e.ThuocVeTrangTrai,
+                                       trangThai=e.TrangThai,
+                                       viTri=e.ViTriDat,
+                                       
+                                   }).ToListAsync();
+            return equip;
+        }
+        public async Task InsertEquipment(InsertEquipmentViewModel equipment,ClaimsPrincipal User)
+        {
+            var customer = await _userManager.GetUserAsync(User);
+            var Idcustomer = customer.Id;
+            var IdFarm = await (from a in _context.Customer
+                                where a.Id == Idcustomer
+                                select a.SoHuuTrangTrai).FirstOrDefaultAsync();
+            var viTri = equipment.X +" "+ equipment.Y;
+            if (equipment.loaiThietBi=="output")
+            {
+                var newEquipment = new Equipment()
+                {
+                    Ten = equipment.nameOut,
+                    Loai = equipment.loaiThietBi,
+                    ThuocVeTrangTrai = IdFarm,
+                    Image = equipment.image,
+                    TrangThai = true,
+                    ViTriDat = viTri,
+                    ThongTin = equipment.thongTin
+                };
+                _context.Equipment.Add(newEquipment);
+                _context.SaveChanges();
+                var IdOutput = (from i in _context.Equipment
+                               select i.Id).Max();
+                var valueOpen = (from v in _context.Output
+                                 join e in _context.Equipment on v.Id equals e.Id
+                                 where e.ThuocVeTrangTrai==IdFarm
+                                 select v.ValueOpen).Max();
+
+                var newOutput = new Output()
+                {
+                    Id = IdOutput,
+                    TrangThaiHoatDong = true,
+                    ValueOpen=valueOpen+2
+                };
+                _context.Output.Add(newOutput);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var newEquipment = new Equipment()
+                {
+                    Ten = equipment.nameIn,
+                    Loai = equipment.loaiThietBi,
+                    ThuocVeTrangTrai = IdFarm,
+                    Image = equipment.image,
+                    TrangThai = true,
+                    ViTriDat = viTri,
+                    ThongTin = equipment.thongTin
+                };
+                _context.Equipment.Add(newEquipment);
+                _context.SaveChanges();
+                var IdInput = (from i in _context.Equipment
+                              select i.Id).Max();
+                var newInput = new Input()
+                {
+                    Id = IdInput,
+                    LoaiThietBi=equipment.nameIn
+                };
+                _context.Input.Add(newInput);
+                _context.SaveChanges();
+                var newInOut = new InputOutput()
+                {
+                    IdInput = IdInput,
+                    IdOutput = equipment.idOutput,
+                    LoaiThietBiInput = equipment.nameIn
+                };
+                _context.InputOutput.Add(newInOut);
+                _context.SaveChanges();
+            }
+            
         }
     }
 }

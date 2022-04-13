@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartFarm.Data.Entities;
 using SmartFarm.Models;
 using SmartFarm.Services;
 using System;
@@ -13,12 +15,14 @@ namespace SmartFarm.Controllers
     public class HomeController : Controller
     {
         private readonly ICustomerService _customerService;
+        private readonly UserManager<Customer> _userManager;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, ICustomerService customerService)
+        public HomeController(ILogger<HomeController> logger, ICustomerService customerService, UserManager<Customer> userManager)
         {
             _logger = logger;
             _customerService = customerService;
+            _userManager = userManager;
         }
 
         public IActionResult Index(int a)
@@ -50,9 +54,16 @@ namespace SmartFarm.Controllers
             _customerService.PostEditAccount(account);
             return RedirectToAction("InforUser", "Home");
         }
-        public IActionResult ManageDevice()
+        public async Task<IActionResult> ManageDevice(int idFarm)
         {
-            return View();
+            var equipment = await _customerService.GetEquipmentAsync(idFarm);
+            return View(equipment);
+        
+        }
+        public async Task<IActionResult> InsertEquipment(InsertEquipmentViewModel equipment)
+        {
+            await _customerService.InsertEquipment(equipment,User);
+            return RedirectToAction("ManageDevice", "Home", new { idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai });
         }
         [HttpGet("/Login")]
         public IActionResult Login()

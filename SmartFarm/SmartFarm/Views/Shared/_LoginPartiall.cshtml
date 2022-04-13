@@ -26,13 +26,8 @@
             aria-labelledby="dropdownMenuButton"
           >
             <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("InforUser","Home",new { UserName=UserManager.GetUserAsync(User).Result.UserName})">Thông tin cá nhân</a>
-            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDevice","Home")"
-              >Quản lý thiết bị</a
-            >
-            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Logout", "Home")"
-              >Đăng xuất</a
-            >
-          </div>
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("ManageDevice","Home",new { idFarm=UserManager.GetUserAsync(User).Result.SoHuuTrangTrai})">Quản lý thiết bị</a>
+            <a class="dropdown-item nav-user__dropdown-item" href="@Url.Action("Logout", "Home")">Đăng xuất</a>
         </div>
     </div>
 }
