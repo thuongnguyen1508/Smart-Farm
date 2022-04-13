@@ -1,9 +1,9 @@
 (() => {
   // *****************Variables*****************
   let user_Adafruit1={
-    aIO_key:"aio_PjvV086lAZtLjg09IspiYaZLnaK1",
+    aIO_key:"aio_PzLU59yCdH2xdJxoxzriA4Ymr8AX",
     Name:"luucongdinh"
-  }
+  };
   let max_threshold = 80,
     min_threshold = 30;
   const MONTHS = [
@@ -25,8 +25,7 @@
     return { month: el, maxNumber: 0, minNumber: 0, number: 0 };
   });
   
-  //   console.log(dataGroups);
-  const year = 2022;
+  const year =new Date().getFullYear();
   let fromDate = new Date(`January 01, ${year}`);
   let toDate = new Date(`January 01, ${year + 1}`);
 
