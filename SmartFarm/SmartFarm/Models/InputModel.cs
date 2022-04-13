@@ -14,6 +14,7 @@ namespace SmartFarm.Models
         public String image{ get; set;}
         public TimeSpan timeSet { get;  set; }
         public float nguongMax{get; set; }
+        public string donVi{get; set; }
         public float nguongMin{get; set; }
         public int secondTime { get; set; }
     }

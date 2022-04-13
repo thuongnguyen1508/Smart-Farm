@@ -4,8 +4,8 @@
     aIO_key:"aio_PzLU59yCdH2xdJxoxzriA4Ymr8AX",
     Name:"luucongdinh"
   };
-  let max_threshold = 80,
-    min_threshold = 30;
+  let max_threshold = document.getElementById("max").getAttribute("max"),
+      min_threshold = document.getElementById("min").getAttribute("min");
   const MONTHS = [
     "Tháng 1",
     "Tháng 2",

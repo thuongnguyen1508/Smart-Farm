@@ -11,7 +11,10 @@
              id="dropdownMenuButton"
              data-bs-toggle="dropdown"
              aria-expanded="false">
-            <span class="nav-user__name">Xin chào @UserManager.GetUserAsync(User).Result.UserName</span>
+             <span class="nav-user__avatar">
+                    <img src="@UserManager.GetUserAsync(User).Result.Image" alt="User avatar" />
+            </span>
+            <span class="nav-user__name" style="font-size: 1.3rem;">@UserManager.GetUserAsync(User).Result.UserName</span>
         </div>
 
         <div class="dropdown-menu nav-user__dropdown"

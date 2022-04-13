@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SmartFarm.Data.Entities;
 using SmartFarm.Models;
 using SmartFarm.Services;
 
@@ -9,9 +11,11 @@ namespace SmartFarm.Controllers
     public class InputDeviceController : Controller
     {
         private readonly IInputService _inputService;
-        public InputDeviceController(IInputService inputService)
+        private readonly UserManager<Customer> _userManager;
+        public InputDeviceController(IInputService inputService,UserManager<Customer> userManager)
         {
             _inputService = inputService;
+            _userManager = userManager;
         }
         [HttpGet]
         public async Task<IActionResult> SetUpNguong()
@@ -20,7 +24,8 @@ namespace SmartFarm.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            var input=await _inputService.GetInputsAsync();
+            var idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai;
+            var input=await _inputService.GetInputsAsync(idFarm);
             return View(input);
         }
         [HttpPost]

@@ -72,13 +72,16 @@
 }
 
 .map {
-    width: 100%;
+    position: fixed !important;
+    width: 37rem;
     border: 3px solid #7bc36c;
     border-radius: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
+    padding-left: 1rem;
 }
 
     .map img {
@@ -94,7 +97,9 @@
 
 @media (max-width: 991.98px) {
     .map {
-        flex: 0 1 33%;
+        position: relative !important;
+        width: 40%;
+        margin: 0 auto;
     }
 }
 

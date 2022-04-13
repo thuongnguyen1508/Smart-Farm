@@ -15,12 +15,12 @@ namespace SmartFarm.Services
         {
             _context = context;
         }
-        public async Task<List<OutputModel>> GetOutputAsync()
+        public async Task<List<OutputModel>> GetOutputAsync(int idFarm)
         {
             var result = await (from o in _context.Output
                                 join e in _context.Equipment on o.Id equals e.Id
                                 join io in _context.InputOutput on o.Id equals io.IdOutput
-                                where e.TrangThai==true
+                                where e.TrangThai==true && e.ThuocVeTrangTrai==idFarm
                                 select new OutputModel
                                 {
                                     id = o.Id,

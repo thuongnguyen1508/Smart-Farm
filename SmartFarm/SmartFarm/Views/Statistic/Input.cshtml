@@ -1,5 +1,4 @@
 ﻿@using SmartFarm.Models;
-
 @model InputModel;
 @{
     ViewData["Title"] = "Input";
@@ -145,15 +144,30 @@
     document.querySelector('input[type="button"]').onclick=function(e) {
         if (document.querySelector('select').value=="2") 
         {  
-            document.querySelector('#chart').style.display = 'block';
+            console.log(document.querySelector('#type_chart'))
+            document.querySelector('#type_chart').style.display = 'block';
             document.querySelector('#table').style.display = 'none';
         }
         else 
         {
-            document.querySelector('#chart').style.display = 'none';
+            document.querySelector('#type_chart').style.display = 'none';
             document.querySelector('#table').style.display = 'block';
         }
     };
+    console.log(document.querySelector('#chart_bar'))
+    document.querySelector('#chart_bar').style.display='none';
+    document.querySelector('#option_chart').onchange=function(e) {
+        console.log(e.target.value);
+        if(e.target.value==1)
+        {
+            document.querySelector('#chart_line').style.display='block';
+            document.querySelector('#chart_bar').style.display='none';
+        }
+        else{
+            document.querySelector('#chart_line').style.display='none';
+            document.querySelector('#chart_bar').style.display='block';
+        }
+    }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script

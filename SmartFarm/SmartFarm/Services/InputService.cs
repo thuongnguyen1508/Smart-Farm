@@ -32,14 +32,15 @@ namespace SmartFarm.Services
                                     loaiThietBi=i.LoaiThietBi,
                                     nguongMin=i.Min,
                                     nguongMax=i.Max,
-                                    timeSet=i.ThoiGianTruyXuat
+                                    timeSet=i.ThoiGianTruyXuat,
+                                    donVi=i.DonVi
                                 }).FirstOrDefaultAsync();
             return result;
         }
-        public async Task<List<InputModel>> GetInputsAsync(){
+        public async Task<List<InputModel>> GetInputsAsync(int idFarm){
             var result = await (from i in _context.Input
                                 join e in _context.Equipment on i.Id equals e.Id
-                                where e.TrangThai==true
+                                where e.TrangThai==true && e.ThuocVeTrangTrai==idFarm
                                 select new InputModel
                                 {
                                     id = i.Id,
@@ -52,7 +53,8 @@ namespace SmartFarm.Services
                                     loaiThietBi=i.LoaiThietBi,
                                     nguongMin=i.Min,
                                     nguongMax=i.Max,
-                                    timeSet=i.ThoiGianTruyXuat
+                                    timeSet=i.ThoiGianTruyXuat,
+                                    donVi=i.DonVi
                                 }).ToListAsync();
             return result;
         }
