@@ -8,6 +8,8 @@ namespace SmartFarm.Models
 {
     public class UserInforViewModel
     {
+        [Required()]
+        public string ImgUrl { get; set; }
         public string UserName { get; set; }
         [Required()]
         public string CurentPassword { get; set; }

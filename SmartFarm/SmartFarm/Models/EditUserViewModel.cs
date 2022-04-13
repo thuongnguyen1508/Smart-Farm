@@ -9,6 +9,8 @@ namespace SmartFarm.Models
     public class EditUserViewModel
     {
         [Required()]
+        public string ImgUrl { get; set; }
+        [Required()]
         public string UserName { get; set; }
         [Required()]
         public string Password { get; set; }
