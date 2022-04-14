@@ -3,7 +3,7 @@
 
 //*************CUSTOM variable******************* */
 let user_Adafruit={
-    aIO_key:"aio_PzLU59yCdH2xdJxoxzriA4Ymr8AX",
+    aIO_key:"aio_fOZA02UuFTw2CipqP8RKUFFh0CpB",
   Name:"luucongdinh"
 }
 //********************************************** */
