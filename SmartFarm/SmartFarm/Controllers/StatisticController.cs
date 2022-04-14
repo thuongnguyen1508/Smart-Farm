@@ -11,13 +11,15 @@ namespace SmartFarm.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IInputService _inputService;
+        private readonly IOutputService _outputservice;
         private readonly ICustomerService _customerService;
 
-        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService)
+        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService,IOutputService outputService)
         {
             _logger = logger;
             _inputService = inputService;
             _customerService = customerService;
+            _outputservice = outputService;
         }
         public async Task<IActionResult> ThonkeAsync(int idFarm=1)
         {
@@ -43,14 +45,15 @@ namespace SmartFarm.Controllers
             return View(input);
         }
 
-
-        public IActionResult Output()
+        [HttpGet]
+        public IActionResult Output(int id)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Home");
             }
-            return View();
+            var result = _outputservice.GetOutputById(id);
+            return View(result);
         }
     }
 }

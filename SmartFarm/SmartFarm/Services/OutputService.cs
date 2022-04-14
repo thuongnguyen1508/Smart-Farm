@@ -64,7 +64,26 @@ namespace SmartFarm.Services
             }
             return result;
         }
-
+        public OutputModel GetOutputById(int id)
+        {
+            var result =  (from o in _context.Output
+                                join e in _context.Equipment on o.Id equals e.Id
+                                where e.TrangThai==true && o.Id==id
+                                select new OutputModel
+                                {
+                                    id = o.Id,
+                                    name = e.Ten,
+                                    trangThaiHoatDong = o.TrangThaiHoatDong,
+                                    feedName = o.FeedName,
+                                    thuocVeTrangTrai = e.ThuocVeTrangTrai,
+                                    trangThai = e.TrangThai,
+                                    viTri = e.ViTriDat,
+                                    img = e.Image,
+                                    valueOpen=o.ValueOpen,
+                                    auto=o.Auto
+                                }).FirstOrDefault();
+            return result;
+        }
         public void SetAutOutput(int i, int id)
         {
             var output= (from o in _context.Output

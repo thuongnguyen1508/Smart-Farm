@@ -1,7 +1,7 @@
 (() => {
   // *****************Variables*****************
   let user_Adafruit1={
-    aIO_key:"aio_RXOz21YZEpzTqS3At1dtPVl1RpQT",
+    aIO_key:"aio_RwUa43pnuNWSfUX1gTKfm0tiIR7v",
     Name:"luucongdinh"
   };
   let max_threshold = document.getElementById("max").getAttribute("max"),
@@ -31,8 +31,8 @@
 
   //   **************DISPLAY CHART*****************
   getDataAdafruitInInterval(
-    user_Adafruit1.aIO_key,
-    user_Adafruit1.Name,
+    user_Adafruit.aIO_key,
+    user_Adafruit.Name,
     document.querySelector('#feed').getAttribute("value"),
     1,
     fromDate,
