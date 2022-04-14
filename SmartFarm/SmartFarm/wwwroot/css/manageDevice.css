@@ -72,8 +72,7 @@
 }
 
 .map {
-    position: fixed !important;
-    width: 37rem;
+    width: 100%;
     border: 3px solid #7bc36c;
     border-radius: 13px;
     display: flex;
@@ -97,7 +96,6 @@
 
 @media (max-width: 991.98px) {
     .map {
-        position: relative !important;
         width: 40%;
         margin: 0 auto;
     }
