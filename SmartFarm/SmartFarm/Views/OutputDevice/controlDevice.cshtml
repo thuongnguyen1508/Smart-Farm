@@ -51,7 +51,7 @@
                   <input type="hidden" value="" name="i" />
                 </form>
               </figure>
-
+              <input type="hidden" value="@Model[0].AioKey" id="aiokey"/>
             }
           </div>
         </div>
@@ -77,8 +77,9 @@
     if (el.children[0].getAttribute("value") === '1') el.children[0].checked = true;
     else el.children[0].checked = false;
   });
+  var a=document.querySelector("#aiokey").getAttribute("value");
   var user_Adafruit = {
-    aIO_key: "aio_RwUa43pnuNWSfUX1gTKfm0tiIR7v",
+    aIO_key: a,
     userName: "luucongdinh"
   };
   function requestPost(key_feed, aIO_key, userName, data) {

@@ -17,5 +17,6 @@ namespace SmartFarm.Models
         public string donVi{get; set; }
         public float nguongMin{get; set; }
         public int secondTime { get; set; }
+        public string AioKey { get; set; }
     }
 }

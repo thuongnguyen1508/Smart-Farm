@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartFarm.Data.Entities;
 using SmartFarm.Models;
 using SmartFarm.Services;
 
@@ -13,13 +15,15 @@ namespace SmartFarm.Controllers
         private readonly IInputService _inputService;
         private readonly IOutputService _outputservice;
         private readonly ICustomerService _customerService;
+        private readonly UserManager<Customer> _userManager;
 
-        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService,IOutputService outputService)
+        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService,IOutputService outputService, UserManager<Customer> userManager)
         {
             _logger = logger;
             _inputService = inputService;
             _customerService = customerService;
             _outputservice = outputService;
+            _userManager = userManager;
         }
         public async Task<IActionResult> ThonkeAsync(int idFarm)
         {
@@ -31,6 +35,7 @@ namespace SmartFarm.Controllers
             //InputAndOutputModel result=new InputAndOutputModel();
             //result.Inputs=input;
             //return View(result);
+            idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai;
             var equipment = await _customerService.GetEquipmentAsync(idFarm);
             return View(equipment);
         }

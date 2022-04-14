@@ -16,6 +16,7 @@ namespace SmartFarm.Data
             builder.HasKey(farm => farm.Id);
             builder.Property(farm => farm.Ten);
             builder.Property(farm => farm.DiaDiem);
+            builder.Property(farm => farm.AioKey);
         }
     }
 }
