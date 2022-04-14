@@ -78,7 +78,7 @@ namespace SmartFarm.Services
         public async Task<List<EquipmentViewModel>> GetEquipmentAsync(int idFarm)
         {
             var equip = await (from e in _context.Equipment
-                               where e.ThuocVeTrangTrai==idFarm
+                               where e.ThuocVeTrangTrai==idFarm && e.TrangThai==true
                                    select new EquipmentViewModel 
                                    {
                                        id=e.Id,
@@ -171,6 +171,41 @@ namespace SmartFarm.Services
                 _context.SaveChanges();
             }
             
+        }
+        public void DeleteEquipment(int id)
+        {
+            var equipment = (from e in _context.Equipment
+                             where e.Id == id
+                             select e).FirstOrDefault();
+            equipment.TrangThai = false;
+            _context.SaveChanges();
+        }
+        public EditEquipmentViewModel GetEquipmentDetail(int id)
+        {
+            var equipment = (from e in _context.Equipment
+                             where e.Id == id
+                             select new EditEquipmentViewModel
+                             {
+                                 id=e.Id,
+                                 image=e.Image,
+                                 thongTin=e.ThongTin,
+                                 thuocVeTrangTrai=e.ThuocVeTrangTrai,
+                                 viTri=e.ViTriDat,
+                                 name=e.Ten
+                             }).FirstOrDefault();
+            return equipment;
+
+        }
+        public void PostEditEquipment(EditEquipmentViewModel equipment)
+        {
+            var equip = (from e in _context.Equipment
+                           where e.Id == equipment.id
+                           select e).FirstOrDefault();
+            equip.Image = equipment.image;
+            equip.ThongTin = equipment.thongTin;
+            equip.ThuocVeTrangTrai = equipment.thuocVeTrangTrai;
+            equip.ViTriDat = equipment.viTri;
+            _context.SaveChanges();
         }
     }
 }

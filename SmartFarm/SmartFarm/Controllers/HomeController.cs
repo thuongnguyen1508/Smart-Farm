@@ -106,5 +106,21 @@ namespace SmartFarm.Controllers
             }
             return RedirectToAction("Home");
         }
+        public IActionResult EquipmentDetail(int id)
+        {
+            var equipment = _customerService.GetEquipmentDetail(id);
+            return View(equipment);
+        }
+        public IActionResult PostEditEquipment(EditEquipmentViewModel equipment)
+        {
+            _customerService.PostEditEquipment(equipment);
+            return RedirectToAction("ManageDevice", "Home", new { idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai });
+
+        }
+        public IActionResult DeleteEquipment(int id)
+        {
+            _customerService.DeleteEquipment(id);
+            return RedirectToAction("ManageDevice", "Home", new { idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai });
+        }
     }
 }

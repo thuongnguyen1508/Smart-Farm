@@ -99,9 +99,15 @@
                       @if (e.loaiThietBi == "output")
                       {
                           <figure class="device__figure">
-                              <img src="@e.image"
-                                   alt="device image"
-                                   class="device__img mb-3" />
+                              <form asp-controller="Home" asp-action="DeleteEquipment">
+                                  <input name="id" type="hidden" value="@e.id" />
+                                  <button class="delete">X</button>
+                              </form>
+                              <a href="@Url.Action("EquipmentDetail",new {id=e.id})">
+                                  <img src="@e.image"
+                                       alt="device image"
+                                       class="device__img mb-3" />
+                              </a>
 
                               <div class="device__name">@e.name</div>
                               <div class="device__coordinates">
@@ -122,15 +128,21 @@
                       @if (e.loaiThietBi == "input")
                       {
                           <figure class="device__figure">
-                              <img src="@e.image"
-                                   alt="device image"
-                                   class="device__img mb-3" />
+                              <form asp-controller="Home" asp-action="DeleteEquipment">
+                                  <input name="id" type="hidden" value="@e.id" />
+                                  <button class="delete">X</button>
+                              </form>
+                              <a href="@Url.Action("EquipmentDetail",new {id=e.id})">
+                                  <img src="@e.image"
+                                       alt="device image"
+                                       class="device__img mb-3" />
+                              </a>
 
-                              <div class="device__name">@e.name</div>
-                              <div class="device__coordinates">
-                                  @e.viTri
-                              </div>
-                          </figure>
+                                  <div class="device__name">@e.name</div>
+                                  <div class="device__coordinates">
+                                      @e.viTri
+                                  </div>
+                            </figure>
                       }
 
                   }
