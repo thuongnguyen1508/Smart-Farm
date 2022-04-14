@@ -19,7 +19,7 @@ namespace SmartFarm.Controllers
             _inputService = inputService;
             _customerService = customerService;
         }
-        public async Task<IActionResult> ThonkeAsync(int idFarm=1)
+        public async Task<IActionResult> ThonkeAsync(int idFarm)
         {
             if (!User.Identity.IsAuthenticated)
             {
