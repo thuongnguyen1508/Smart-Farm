@@ -98,6 +98,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" value="@Model.AioKey" id="aiokey"/>
     <!-- Service End -->
     <!-- /container -->
 </div>
@@ -135,9 +136,9 @@
     };
     /****************************** Var draw chart *********************/
     let valueOpen=document.querySelector('#open').getAttribute("value");
-    console.log("dinh", @Model.AioKey)
+    var a=document.querySelector("#aiokey").getAttribute("value");
     let user_Adafruit = {
-        aIO_key: `${@Model.AioKey}`,
+        aIO_key: a,
         Name: "luucongdinh"
     }
     /***************************** Var draw chart **************************/
