@@ -16,5 +16,8 @@ namespace SmartFarm.Services
         Task<bool> PostPassword(UserInforViewModel account);
         Task<List<EquipmentViewModel>> GetEquipmentAsync(int idFarm);
         Task InsertEquipment(InsertEquipmentViewModel equipment, ClaimsPrincipal user);
+        void DeleteEquipment(int id);
+        EditEquipmentViewModel GetEquipmentDetail(int id);
+        void PostEditEquipment(EditEquipmentViewModel equipment);
     }
 }
