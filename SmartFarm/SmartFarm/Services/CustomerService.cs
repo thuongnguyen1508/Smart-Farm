@@ -25,15 +25,36 @@ namespace SmartFarm.Services
             _userManager = userManager;
             _context = context;
         }
-        public async Task<bool> LoginAsync(string username, string password)
+        public async Task<int> LoginAsync(string username, string password)
         {
             var customer = await _userManager.FindByNameAsync(username);
             if (customer == null)
             {
-                return false;
+                return 1;
             }
-            var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
-            return result.Succeeded;
+            var admin = (from u in _context.Customer
+                           where u.UserName == username
+                           select u.VaiTro).FirstOrDefault();
+            if (admin == "admin")
+            {
+                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
+                if (result.Succeeded)
+                { return 2; }
+                else
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
+                if (result.Succeeded)
+                { return 3; }
+                else
+                {
+                    return 1;
+                }
+            }
         }
         public async Task SignOutAsync()
         {

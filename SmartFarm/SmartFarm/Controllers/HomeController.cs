@@ -54,7 +54,7 @@ namespace SmartFarm.Controllers
             _customerService.PostEditAccount(account);
             return RedirectToAction("InforUser", "Home");
         }
-        public async Task<IActionResult> ManageDevice(int idFarm=1)
+        public async Task<IActionResult> ManageDevice(int idFarm)
         {
             var equipment = await _customerService.GetEquipmentAsync(idFarm);
             return View(equipment);
@@ -77,16 +77,21 @@ namespace SmartFarm.Controllers
             {
                 return View(loginViewModel);
             }
-
             var loginSucess = await _customerService.LoginAsync(loginViewModel.UserName, loginViewModel.Password);
 
-            if (!loginSucess)
+            if (loginSucess == 1)
             {
                 loginViewModel.ErrorMessage = "Tài khoản không tồn tại";
                 return View(loginViewModel);
             }
-
-            return RedirectToAction("Home");
+            else if (loginSucess == 3)
+            {
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                return RedirectToAction("ManageUser", "Admin");
+            }
         }
         public async Task<IActionResult> Logout()
         {

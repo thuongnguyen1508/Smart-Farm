@@ -9,7 +9,7 @@ namespace SmartFarm.Services
 {
     public interface ICustomerService
     {
-        Task<bool> LoginAsync(string username, string password);
+        Task<int> LoginAsync(string username, string password);
         Task SignOutAsync();
         UserInforViewModel InforUser(string UserName);
         void PostEditAccount(UserInforViewModel account);
