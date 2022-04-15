@@ -12,12 +12,14 @@ namespace SmartFarm.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IInputService _inputService;
         private readonly ICustomerService _customerService;
+        private readonly IChartContext _chartContext;
 
-        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService)
+        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService, IChartContext chartContext)
         {
             _logger = logger;
             _inputService = inputService;
             _customerService = customerService;
+            _chartContext = chartContext;
         }
         public async Task<IActionResult> ThonkeAsync(int idFarm=1)
         {

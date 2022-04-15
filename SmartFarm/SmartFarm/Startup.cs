@@ -45,6 +45,7 @@ namespace SmartFarm
             services.AddTransient<UserManager<Customer>, UserManager<Customer>>();
             services.AddTransient<IOutputService,OutputService>();
             services.AddTransient<IInputService,InputService>();
+            services.AddTransient<IChartContext, ChartContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
