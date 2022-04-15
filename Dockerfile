@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["SmartFarm/SmartFarm/SmartFarm.csproj", "SmartFarm/"]
 RUN dotnet restore "SmartFarm/SmartFarm/SmartFarm.csproj"
 COPY . .
-WORKDIR "/src/SmartFarm"
+WORKDIR "/src/SmartFarm/SmartFarm"
 RUN dotnet build "SmartFarm.csproj" -c Release -o /app/build
 
 FROM build AS publish
