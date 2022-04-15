@@ -18,5 +18,7 @@ namespace SmartFarm.Models
         public float nguongMin{get; set; }
         public int secondTime { get; set; }
         public string AioKey { get; set; }
+        public string DrawFunction { get; set; }
+        public int typeChart { get; set; }
     }
 }
