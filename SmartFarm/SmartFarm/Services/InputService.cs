@@ -18,8 +18,9 @@ namespace SmartFarm.Services
         public async Task<InputModel> GetInputIdAsync(int id)
         {
             var result = await (from i in _context.Input
+                                from f in _context.Farm
                                 join e in _context.Equipment on i.Id equals e.Id
-                                where i.Id==id && e.TrangThai==true
+                                where i.Id==id && e.TrangThai==true && e.ThuocVeTrangTrai==f.Id
                                 select new InputModel
                                 {
                                     id = i.Id,
@@ -32,14 +33,17 @@ namespace SmartFarm.Services
                                     loaiThietBi=i.LoaiThietBi,
                                     nguongMin=i.Min,
                                     nguongMax=i.Max,
-                                    timeSet=i.ThoiGianTruyXuat
+                                    timeSet=i.ThoiGianTruyXuat,
+                                    donVi=i.DonVi,
+                                    AioKey=f.AioKey
                                 }).FirstOrDefaultAsync();
             return result;
         }
-        public async Task<List<InputModel>> GetInputsAsync(){
+        public async Task<List<InputModel>> GetInputsAsync(int idFarm){
             var result = await (from i in _context.Input
+                                from f in _context.Farm
                                 join e in _context.Equipment on i.Id equals e.Id
-                                where e.TrangThai==true
+                                where e.TrangThai==true && e.ThuocVeTrangTrai==idFarm && f.Id==idFarm
                                 select new InputModel
                                 {
                                     id = i.Id,
@@ -52,7 +56,9 @@ namespace SmartFarm.Services
                                     loaiThietBi=i.LoaiThietBi,
                                     nguongMin=i.Min,
                                     nguongMax=i.Max,
-                                    timeSet=i.ThoiGianTruyXuat
+                                    timeSet=i.ThoiGianTruyXuat,
+                                    donVi=i.DonVi,
+                                    AioKey=f.AioKey
                                 }).ToListAsync();
             return result;
         }

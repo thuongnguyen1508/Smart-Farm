@@ -15,6 +15,7 @@ namespace SmartFarm.Models{
         public string loaiThietBi { get; set; }
         public bool auto{ get;  set;}
         public InputLinkOuptModel inputOupts { get;  set; }
+        public string AioKey { get; set; }
         public int auto1{ get; set; }
     }
 }

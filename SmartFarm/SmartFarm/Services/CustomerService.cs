@@ -25,15 +25,36 @@ namespace SmartFarm.Services
             _userManager = userManager;
             _context = context;
         }
-        public async Task<bool> LoginAsync(string username, string password)
+        public async Task<int> LoginAsync(string username, string password)
         {
             var customer = await _userManager.FindByNameAsync(username);
             if (customer == null)
             {
-                return false;
+                return 1;
             }
-            var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
-            return result.Succeeded;
+            var admin = (from u in _context.Customer
+                           where u.UserName == username
+                           select u.VaiTro).FirstOrDefault();
+            if (admin == "admin")
+            {
+                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
+                if (result.Succeeded)
+                { return 2; }
+                else
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
+                if (result.Succeeded)
+                { return 3; }
+                else
+                {
+                    return 1;
+                }
+            }
         }
         public async Task SignOutAsync()
         {
@@ -78,7 +99,7 @@ namespace SmartFarm.Services
         public async Task<List<EquipmentViewModel>> GetEquipmentAsync(int idFarm)
         {
             var equip = await (from e in _context.Equipment
-                               where e.ThuocVeTrangTrai==idFarm
+                               where e.ThuocVeTrangTrai==idFarm && e.TrangThai==true
                                    select new EquipmentViewModel 
                                    {
                                        id=e.Id,
@@ -171,6 +192,41 @@ namespace SmartFarm.Services
                 _context.SaveChanges();
             }
             
+        }
+        public void DeleteEquipment(int id)
+        {
+            var equipment = (from e in _context.Equipment
+                             where e.Id == id
+                             select e).FirstOrDefault();
+            equipment.TrangThai = false;
+            _context.SaveChanges();
+        }
+        public EditEquipmentViewModel GetEquipmentDetail(int id)
+        {
+            var equipment = (from e in _context.Equipment
+                             where e.Id == id
+                             select new EditEquipmentViewModel
+                             {
+                                 id=e.Id,
+                                 image=e.Image,
+                                 thongTin=e.ThongTin,
+                                 thuocVeTrangTrai=e.ThuocVeTrangTrai,
+                                 viTri=e.ViTriDat,
+                                 name=e.Ten
+                             }).FirstOrDefault();
+            return equipment;
+
+        }
+        public void PostEditEquipment(EditEquipmentViewModel equipment)
+        {
+            var equip = (from e in _context.Equipment
+                           where e.Id == equipment.id
+                           select e).FirstOrDefault();
+            equip.Image = equipment.image;
+            equip.ThongTin = equipment.thongTin;
+            equip.ThuocVeTrangTrai = equipment.thuocVeTrangTrai;
+            equip.ViTriDat = equipment.viTri;
+            _context.SaveChanges();
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartFarm.Data.Entities;
 using SmartFarm.Models;
 using SmartFarm.Services;
 using System.Threading.Tasks;
@@ -9,13 +11,19 @@ namespace SmartFarm.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
+        private readonly UserManager<Customer> _userManager;
 
-        public AdminController(IAdminService adminService)
+        public AdminController(IAdminService adminService,UserManager<Customer> userManager)
         {
             _adminService = adminService;
+            _userManager = userManager;
         }
         public async Task<IActionResult> ManageUser()
         {
+            if(_userManager.GetUserAsync(User).Result.VaiTro!="admin")
+            {
+                return RedirectToAction("Home","Home");
+            }
             var product = await _adminService.GetAdminAccountAsync();
             return View(product);
         }

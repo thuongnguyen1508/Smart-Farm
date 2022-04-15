@@ -31,7 +31,7 @@ namespace SmartFarm.Services
                                  select new AdminAccountViewModel
                                  {
                                      Email = a.Email,
-                                     FullName = a.Ho,
+                                     FullName = a.Ho +" " + a.Ten,
                                      UserName = a.UserName
                                  }).ToListAsync();
             return account;

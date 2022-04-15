@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartFarm.Data.Entities;
 using SmartFarm.Models;
 using SmartFarm.Services;
 
@@ -11,17 +13,23 @@ namespace SmartFarm.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IInputService _inputService;
+        private readonly IOutputService _outputservice;
         private readonly ICustomerService _customerService;
         private readonly IChartContext _chartContext;
 
         public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService, IChartContext chartContext)
+        private readonly UserManager<Customer> _userManager;
+
+        public StatisticController(ILogger<HomeController> logger,IInputService inputService, ICustomerService customerService,IOutputService outputService, UserManager<Customer> userManager)
         {
             _logger = logger;
             _inputService = inputService;
             _customerService = customerService;
             _chartContext = chartContext;
+            _outputservice = outputService;
+            _userManager = userManager;
         }
-        public async Task<IActionResult> ThonkeAsync(int idFarm=1)
+        public async Task<IActionResult> ThonkeAsync(int idFarm)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -31,6 +39,7 @@ namespace SmartFarm.Controllers
             //InputAndOutputModel result=new InputAndOutputModel();
             //result.Inputs=input;
             //return View(result);
+            idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai;
             var equipment = await _customerService.GetEquipmentAsync(idFarm);
             return View(equipment);
         }
@@ -45,14 +54,15 @@ namespace SmartFarm.Controllers
             return View(input);
         }
 
-
-        public IActionResult Output()
+        [HttpGet]
+        public IActionResult Output(int id)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Home");
             }
-            return View();
+            var result = _outputservice.GetOutputById(id);
+            return View(result);
         }
     }
 }

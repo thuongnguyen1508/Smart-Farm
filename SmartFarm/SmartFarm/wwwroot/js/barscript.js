@@ -1,11 +1,11 @@
 (() => {
   // *****************Variables*****************
   let user_Adafruit1={
-      aIO_key:"aio_PzLU59yCdH2xdJxoxzriA4Ymr8AX",
+    aIO_key:"aio_RwUa43pnuNWSfUX1gTKfm0tiIR7v",
     Name:"luucongdinh"
-  }
-  let max_threshold = 80,
-    min_threshold = 30;
+  };
+  let max_threshold = document.getElementById("max").getAttribute("max"),
+      min_threshold = document.getElementById("min").getAttribute("min");
   const MONTHS = [
     "Tháng 1",
     "Tháng 2",
@@ -25,15 +25,14 @@
     return { month: el, maxNumber: 0, minNumber: 0, number: 0 };
   });
   
-  //   console.log(dataGroups);
-  const year = 2022;
+  const year =new Date().getFullYear();
   let fromDate = new Date(`January 01, ${year}`);
   let toDate = new Date(`January 01, ${year + 1}`);
 
   //   **************DISPLAY CHART*****************
   getDataAdafruitInInterval(
-    user_Adafruit1.aIO_key,
-    user_Adafruit1.Name,
+    user_Adafruit.aIO_key,
+    user_Adafruit.Name,
     document.querySelector('#feed').getAttribute("value"),
     1,
     fromDate,

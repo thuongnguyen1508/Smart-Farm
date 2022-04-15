@@ -15,7 +15,7 @@
                 aria-expanded="false"
               >
                  <span class="nav-user__avatar">
-                    <img src="/images/avatar.jpg" alt="User avatar" />
+                    <img src="@UserManager.GetUserAsync(User).Result.Image" alt="User avatar" />
                 </span>
                 <span class="nav-user__name">@UserManager.GetUserAsync(User).Result.UserName</span>
               </div>

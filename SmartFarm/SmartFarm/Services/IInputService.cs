@@ -6,7 +6,7 @@ namespace SmartFarm.Services
 {
     public interface IInputService
     {
-        Task<List<InputModel>> GetInputsAsync();
+        Task<List<InputModel>> GetInputsAsync(int idFarm);
         Task<InputModel> GetInputIdAsync(int id);
          void UpdateSetNguong(InputModel input);
     }

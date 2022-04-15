@@ -49,6 +49,6 @@ label{
 .chart_{
     display: grid;
 }
-.button{
+.button1{
     grid-area: 1/7;
 }

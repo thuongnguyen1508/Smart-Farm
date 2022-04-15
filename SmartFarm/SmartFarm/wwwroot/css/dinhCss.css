@@ -224,7 +224,8 @@ th {
 }
 
 .map {
-    width: 100%;
+    position: fixed !important;
+    width: 37rem;
     border: 3px solid #7bc36c;
     border-radius: 13px;
     display: flex;
@@ -232,6 +233,7 @@ th {
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-left: 1rem;
 }
 
     .map img {
@@ -247,7 +249,8 @@ th {
 
 @media (max-width: 991.98px) {
     .map {
-        width: 70%;
+        position: relative !important;
+        width: 40%;
         margin: 0 auto;
     }
 }

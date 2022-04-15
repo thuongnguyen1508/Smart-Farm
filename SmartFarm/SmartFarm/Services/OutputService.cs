@@ -15,12 +15,13 @@ namespace SmartFarm.Services
         {
             _context = context;
         }
-        public async Task<List<OutputModel>> GetOutputAsync()
+        public async Task<List<OutputModel>> GetOutputAsync(int idFarm)
         {
             var result = await (from o in _context.Output
+                                from f in _context.Farm
                                 join e in _context.Equipment on o.Id equals e.Id
                                 join io in _context.InputOutput on o.Id equals io.IdOutput
-                                where e.TrangThai==true
+                                where e.TrangThai==true && e.ThuocVeTrangTrai==idFarm && f.Id==idFarm
                                 select new OutputModel
                                 {
                                     id = o.Id,
@@ -34,7 +35,8 @@ namespace SmartFarm.Services
                                     valueOpen=o.ValueOpen,
                                     idInput=io.IdInput,
                                     loaiThietBi=io.LoaiThietBiInput,
-                                    auto=o.Auto
+                                    auto=o.Auto,
+                                    AioKey=f.AioKey
                                 }).ToListAsync();
             var resultInput = await (from i in _context.Input
                                     join io1 in _context.InputOutput on new {A=i.Id,B=i.LoaiThietBi} equals new{A=io1.IdInput,B=io1.LoaiThietBiInput}
@@ -64,7 +66,28 @@ namespace SmartFarm.Services
             }
             return result;
         }
-
+        public OutputModel GetOutputById(int id)
+        {
+            var result =  (from e in _context.Equipment
+                                join o in _context.Output on e.Id equals o.Id
+                                join f in _context.Farm on e.ThuocVeTrangTrai equals f.Id
+                                where e.TrangThai==true && o.Id==id
+                                select new OutputModel
+                                {
+                                    id = o.Id,
+                                    name = e.Ten,
+                                    trangThaiHoatDong = o.TrangThaiHoatDong,
+                                    feedName = o.FeedName,
+                                    thuocVeTrangTrai = e.ThuocVeTrangTrai,
+                                    trangThai = e.TrangThai,
+                                    viTri = e.ViTriDat,
+                                    img = e.Image,
+                                    valueOpen=o.ValueOpen,
+                                    auto=o.Auto,
+                                    AioKey=f.AioKey
+                                }).FirstOrDefault();
+            return result;
+        }
         public void SetAutOutput(int i, int id)
         {
             var output= (from o in _context.Output
