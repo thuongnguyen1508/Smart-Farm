@@ -6,9 +6,9 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
-WORKDIR /src
-COPY ["SmartFarm/SmartFarm/SmartFarm.csproj", "SmartFarm/SmartFarm"]
-RUN dotnet restore "SmartFarm/SmartFarm/SmartFarm.csproj"
+WORKDIR /src/SmartFarm
+COPY ["SmartFarm/SmartFarm.csproj", "SmartFarm/"]
+RUN dotnet restore "SmartFarm/SmartFarm.csproj"
 COPY . .
 WORKDIR "/src/SmartFarm/SmartFarm"
 RUN dotnet build "SmartFarm.csproj" -c Release -o /app/build
