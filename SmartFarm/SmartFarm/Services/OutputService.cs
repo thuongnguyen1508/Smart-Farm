@@ -49,6 +49,7 @@ namespace SmartFarm.Services
                                         timeSet = i.ThoiGianTruyXuat,
                                         nguongMax=i.Max,
                                         nguongMin=i.Min,
+                                        calculate=i.Calculator
                                     }).ToListAsync();
             foreach(var i in result)
             {
@@ -59,7 +60,7 @@ namespace SmartFarm.Services
                     if(i.id==a.idOutput)
                     {
                          i.inputOupts=a;
-                         Console.WriteLine(a.timeSet.TotalSeconds);
+                         Console.WriteLine(a.calculate);
                         break;
                     }
                 }

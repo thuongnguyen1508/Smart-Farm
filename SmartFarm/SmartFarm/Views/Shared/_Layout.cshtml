@@ -79,6 +79,7 @@
             <!-- </div> -->
         </nav>
     </header>
+    @await Component.InvokeAsync("Auto",@UserManager.GetUserAsync(User).Result.SoHuuTrangTrai)
     <div>
         <main role="main" class="pb-3">
             @RenderBody()

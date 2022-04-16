@@ -40,7 +40,7 @@
                 <label class="switch3">
                   <input type="checkbox" feedName="@sp.feedName" value="@sp.valueOpen"
                   inputFeedName="@sp.inputOupts.feedName" time="@sp.inputOupts.timeSet.TotalSeconds"
-                  Max="@sp.inputOupts.nguongMax" Min="@sp.inputOupts.nguongMin" auto="@sp.auto1" />
+                  Max="@sp.inputOupts.nguongMax" Min="@sp.inputOupts.nguongMin" auto="@sp.auto1" calculate="@sp.inputOupts.calculate.ToString()"/>
                   <div></div>
                 </label>
                 <div style="font-size: 1.8rem;font-weight: 700;color: black;grid-area: 3/1/span 1/span 1;">Tự động:</div>
@@ -51,12 +51,12 @@
                   <input type="hidden" value="" name="i" />
                 </form>
               </figure>
-              <input type="hidden" value="@Model[0].AioKey" id="aiokey"/>
             }
           </div>
         </div>
       </div>
     </div>
+    <input type="hidden" value="@Model[0].AioKey" id="aiokey"/>
   </div>
 </section>
 @section Scripts{
@@ -65,15 +65,11 @@
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <script type="text/javascript">
   document.querySelectorAll(".submit").forEach((el) => {
-    console.log(el.children[2].getAttribute("value"));
     el.firstElementChild.onchange = function (e) {
-      console.log(e);
       if (this.checked) el.children[2].setAttribute("value", 1);
       else el.children[2].setAttribute("value", 0);
       el.submit();
     };
-    console.log(el.children[0].checked)
-    console.log(el.children[0].getAttribute("value"));
     if (el.children[0].getAttribute("value") === '1') el.children[0].checked = true;
     else el.children[0].checked = false;
   });
@@ -100,7 +96,6 @@
   document.querySelectorAll(".switch3 input").forEach((el) => {
     var dad = el.parentElement;
     var key_feed = el.getAttribute("feedName");
-    console.log(el.getAttribute("time"));
     var url = `https://io.adafruit.com/api/v2/${user_Adafruit.userName}/feeds/${key_feed}/data?limit=1`;
     fetch(url, {
       method: "GET",
@@ -110,7 +105,6 @@
     })
       .then(response => response.json())
       .then(data => {
-        console.log(typeof el.getAttribute("value"))
         if (data[0].value === el.getAttribute("value")) {
           if (el.checked == false) {
             el.checked = true;
@@ -126,8 +120,8 @@
   });
   function initial(el) {
     var dad = el.parentElement;
-    var key_feed = el.getAttribute("inputFeedName");
-    var url = `https://io.adafruit.com/api/v2/${user_Adafruit.userName}/feeds/${key_feed}/data?limit=1`;
+    var key_feedI = el.getAttribute("inputFeedName");
+    var url = `https://io.adafruit.com/api/v2/${user_Adafruit.userName}/feeds/${key_feedI}/data?limit=1`;
     fetch(url, {
       method: "GET",
       headers: {
@@ -136,28 +130,50 @@
     })
       .then(response => response.json())
       .then(data => {
+        var key_feedO = el.getAttribute("feedName");
         var data1 = el.getAttribute("value");
-        if (parseFloat(data[0].value, 10) < parseFloat(el.getAttribute("Min"), 10)) {
-          if (el.checked == false) {
-            el.checked = true;
-            if (dad.classList.length == 1) dad.classList.add("switch3-checked");
-            requestPost(key_feed, user_Adafruit.aIO_key, user_Adafruit.userName, data1.toString());
+        if(el.getAttribute("calculate")=="True")
+        {
+          if (parseFloat(data[0].value, 10) > parseFloat(el.getAttribute("Max"), 10)) {
+            if (el.checked == false) {
+              el.checked = true;
+              if (dad.classList.length == 1) dad.classList.add("switch3-checked");
+              requestPost(key_feedO, user_Adafruit.aIO_key, user_Adafruit.userName, data1.toString());
+            }
+          }
+          else if (parseFloat(data[0].value, 10) < parseFloat(el.getAttribute("Min"), 10)) {
+            if (el.checked == true) {
+              el.checked = false;
+              dad.classList.remove("switch3-checked");
+              requestPost(key_feedO, user_Adafruit.aIO_key, user_Adafruit.userName, (data1 - 1).toString());
+            }
           }
         }
-        else if (parseFloat(data[0].value, 10) > parseFloat(el.getAttribute("Max"), 10)) {
-          if (el.checked == true) {
-            el.checked = false;
-            dad.classList.remove("switch3-checked");
-            requestPost(key_feed, user_Adafruit.aIO_key, user_Adafruit.userName, (data1 - 1).toString());
+        else{
+          if (parseFloat(data[0].value, 10) < parseFloat(el.getAttribute("Min"), 10)) {
+            if (el.checked == false) {
+              el.checked = true;
+              if (dad.classList.length == 1) dad.classList.add("switch3-checked");
+              requestPost(key_feedO, user_Adafruit.aIO_key, user_Adafruit.userName, data1.toString());
+            }
+          }
+          else if (parseFloat(data[0].value, 10) > parseFloat(el.getAttribute("Max"), 10)) {
+            if (el.checked == true) {
+              el.checked = false;
+              dad.classList.remove("switch3-checked");
+              requestPost(key_feedO, user_Adafruit.aIO_key, user_Adafruit.userName, (data1 - 1).toString());
+            }
           }
         }
       })
       .catch(err => console.log(err));
   }
   document.querySelectorAll(".switch3 input").forEach((el) => {
-    console.log("value", el.getAttribute("auto"))
     if (el.getAttribute("auto") == 1)
+    {
+      initial(el);
       setInterval(initial, el.getAttribute("time") * 1000, el);
+    }
   });
   document.querySelectorAll(".switch3 input").forEach((el) => {
     var dad = el.parentElement;
@@ -171,7 +187,6 @@
       }
       else {
         dad.classList.remove("switch3-checked");
-        console.log(data - 1)
         requestPost(key_feed, user_Adafruit.aIO_key, user_Adafruit.userName, (data - 1).toString());
       }
     });

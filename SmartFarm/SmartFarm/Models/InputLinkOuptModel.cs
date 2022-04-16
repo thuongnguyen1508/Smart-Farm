@@ -11,5 +11,6 @@ namespace SmartFarm.Models
         public TimeSpan timeSet { get;  set; }
         public float nguongMax{get; set; }
         public float nguongMin{get; set; }
+        public bool calculate{get; set; }
     }
 }
