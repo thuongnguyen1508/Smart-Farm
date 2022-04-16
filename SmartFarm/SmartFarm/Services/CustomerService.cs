@@ -203,16 +203,31 @@ namespace SmartFarm.Services
         }
         public EditEquipmentViewModel GetEquipmentDetail(int id)
         {
+            var input = (from e in _context.Equipment
+                         where e.Id == id
+                         select e.ThuocVeTrangTrai).FirstOrDefault();
+            var listOutput = (from e in _context.Equipment
+                              where e.ThuocVeTrangTrai == input && e.Loai == "output"
+                              select (e.Ten +" "+ e.ViTriDat)).ToList();
+          
             var equipment = (from e in _context.Equipment
-                             where e.Id == id
+                             where e.Id == id 
                              select new EditEquipmentViewModel
                              {
                                  id=e.Id,
+                                 loai=e.Loai,
                                  image=e.Image,
                                  thongTin=e.ThongTin,
-                                 thuocVeTrangTrai=e.ThuocVeTrangTrai,
                                  viTri=e.ViTriDat,
-                                 name=e.Ten
+                                 name=e.Ten,
+                                 output = (from i in _context.Equipment
+                                           where i.ThuocVeTrangTrai == input && i.Loai == "output"
+                                           select new GetOutputViewModel
+                                           { 
+                                               Id = i.Id,
+                                               Name = i.Ten,
+                                               ViTri= i.ViTriDat
+                                           }).ToList()
                              }).FirstOrDefault();
             return equipment;
 
@@ -224,8 +239,21 @@ namespace SmartFarm.Services
                            select e).FirstOrDefault();
             equip.Image = equipment.image;
             equip.ThongTin = equipment.thongTin;
-            equip.ThuocVeTrangTrai = equipment.thuocVeTrangTrai;
             equip.ViTriDat = equipment.viTri;
+            _context.SaveChanges();
+            var Output = (from o in _context.InputOutput
+                          where o.IdInput == equipment.id 
+                          select o).FirstOrDefault();
+            var loaithietbi = Output.LoaiThietBiInput;
+            _context.Remove(Output);
+            _context.SaveChanges();
+            var newInputOutput = new InputOutput()
+            {
+                IdInput = equipment.id,
+                IdOutput = equipment.idOutput,
+                LoaiThietBiInput = loaithietbi
+            };
+            _context.InputOutput.Add(newInputOutput);
             _context.SaveChanges();
         }
     }

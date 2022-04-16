@@ -7,7 +7,7 @@
         <svg class="heading__icon me-4">
             <use xlink:href="/image/spirite.svg#icon-blog"></use>
         </svg>
-        Thiết bị input
+        Thiết bị
     </h1>
     <div></div>
     <div class="row">
@@ -43,16 +43,18 @@
                            id="deviceUrlImg"
                            name="equipment.thongTin"
                            class="device-form__input"
-                           value="@Model.thongTin"/>
+                           value="@Model.thongTin" />
                 </div>
-                <div class="device-form__group">
-                    <label for="deviceUrlImg" class="device-form__label">Thuộc về Trang trại:</label>
-                    <input type="text"
-                           id="deviceUrlImg"
-                           name="equipment.thuocVeTrangTrai"
-                           class="device-form__input"
-                           value="@Model.thuocVeTrangTrai"/>
+                <div class="popup">
+                    <label for="outputs" class="device-form__label">OutPut Link tới:</label>
+                    <select name="equipment.idOutput" id="outputs" class="device-form__input">
+                        @foreach (var o in Model.output)
+                        {
+                            <option value="@o.Id">@o.Name @o.ViTri</option>
+                        }
+                    </select>
                 </div>
+
                 <div class="device-form__group">
                     <label class="device-form__label">Vị trí đặt:</label>
                     <input type="text"
@@ -82,5 +84,15 @@
               <figcaption class="device__subi4">DHT11 (X:?;Y:?)</figcaption>
             </figure> -->
         </div>
+        <input type="hidden" value="@Model.loai" id="types"/>
     </div>
 </section>
+@section Scripts{
+    <script>
+    var x = document.getElementById("types").value;
+    let modal = document.querySelector(".popup");
+        if (x == "input") {
+            modal.style.display = "flex";
+        }
+    </script>
+}

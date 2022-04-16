@@ -158,3 +158,9 @@
 .section-statistic {
     margin-top: 10rem;
 }
+.popup {
+    display: none;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+}
