@@ -50,5 +50,5 @@ label{
     display: grid;
 }
 .button1{
-    grid-area: 1/7;
+    grid-area: 1/7 !important;
 }
