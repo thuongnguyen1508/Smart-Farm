@@ -60,7 +60,6 @@ namespace SmartFarm.Services
                     if(i.id==a.idOutput)
                     {
                          i.inputOupts=a;
-                         Console.WriteLine(a.calculate);
                         break;
                     }
                 }
