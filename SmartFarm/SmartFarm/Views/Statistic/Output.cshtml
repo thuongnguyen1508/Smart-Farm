@@ -98,7 +98,6 @@
             </div>
         </div>
     </div>
-    <input type="hidden" value="@Model.AioKey" id="aiokey"/>
     <!-- Service End -->
     <!-- /container -->
 </div>
@@ -132,13 +131,13 @@
         else {
             document.querySelector('#type_chart').style.display = 'none';
             document.querySelector('#table').style.display = 'block';
-            document.querySelector('#___chart').style.display = 'block';
+            document.querySelector('#___chart').style.display = 'grid';
         }
     };
     /****************************** Var draw chart *********************/
     var valueOpen=document.querySelector('#open').getAttribute("value");
-    var a=document.querySelector("#aiokey").getAttribute("value");
-    var user_Adafruit = {
+    let a=document.querySelector("#aiokey").getAttribute("value");
+    let user_Adafruit = {
         aIO_key: a,
         Name: "luucongdinh"
     }
@@ -271,7 +270,7 @@
                 // console.log(element[0]);
                 const month = new Date(element[0]).getMonth();
                 dataGroups[month].number++;
-                if(parseInt(element[1])!=parseInt(valueOpen))
+                if(parseInt(element[1],10)!=parseInt(valueOpen,10))
                 {
                     ++dataGroups[month].Off;
                 }

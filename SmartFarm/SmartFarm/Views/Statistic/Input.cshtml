@@ -111,7 +111,6 @@
             </div>
         </div>
     </div>
-    <input type="hidden" value="@Model.AioKey" id="aiokey"/>
     <input type="hidden" value="@Model.typeChart" id="typeChart"/>
     <input type="hidden" value="@Model.DrawFunction" id="drawfuction"/>
     <!-- Service End -->
@@ -174,8 +173,8 @@
     /****************************** Var draw chart *********************/
     var max_threshold = document.getElementById("max").getAttribute("max"),
         min_threshold = document.getElementById("min").getAttribute("min");
-    var a=document.querySelector("#aiokey").getAttribute("value");
-    var user_Adafruit = {
+    let a=document.querySelector("#aiokey").getAttribute("value");
+    let user_Adafruit = {
         aIO_key: a,
         Name: "luucongdinh"
     }
@@ -212,7 +211,6 @@
     };
     /******************************Call API adafruit ******************************/
     /******************************Static Table ******************************/
-    @* document.getElementById("chart_line").; *@
         function table(fromDate, toDate)
         {
             getDataAdafruitInInterval(
@@ -302,8 +300,10 @@
                             pointBackgroundColor: function (context) {
                                 var index = context.dataIndex;
                                 var value = context.dataset.data[index];
-                                if (value >= max_threshold) return "rgb(202, 37, 37)";
-                                else if (value <= min_threshold) return "rgb(62, 128, 172)";
+                                if (parseFloat(value,10) > parseFloat(max_threshold,10))
+                                    return "rgb(202, 37, 37)";
+                                else if (parseFloat(value,10) < parseFloat(min_threshold,10)) 
+                                    return "rgb(62, 128, 172)";
                                 else return "#7bc36c";
                             },
                         },
@@ -440,11 +440,11 @@
                 const month = new Date(element[0]).getMonth();
                 dataGroups[month].number++;
                 dataGroups[month].maxNumber =
-                    element[1] >= max_threshold
+                    parseFloat(element[1],10) > parseFloat(max_threshold,10)
                         ? ++dataGroups[month].maxNumber
                         : dataGroups[month].maxNumber;
                 dataGroups[month].minNumber =
-                    element[1] <= min_threshold
+                    parseFloat(element[1],10) < parseFloat(min_threshold,10)
                         ? ++dataGroups[month].minNumber
                         : dataGroups[month].minNumber;
             });
@@ -455,16 +455,16 @@
                 labels: MONTHS,
                 datasets: [
                     {
-                        label: `Tổng`,
-                        data: dataGroups.map((el) => el.number),
-                        borderColor: "rgb(0,0,0,0.7)",
-                        backgroundColor: "#7bc36c",
-                    },
-                    {
                         label: `Vượt ngưỡng max`,
                         data: dataGroups.map((el) => el.maxNumber),
                         borderColor: "rgb(0,0,0,0.7)",
                         backgroundColor: "rgb(202, 37, 37)",
+                    },
+                    {
+                        label: `Tổng`,
+                        data: dataGroups.map((el) => el.number),
+                        borderColor: "rgb(0,0,0,0.7)",
+                        backgroundColor: "#7bc36c",
                     },
                     {
                         label: `Vượt ngưỡng min`,
