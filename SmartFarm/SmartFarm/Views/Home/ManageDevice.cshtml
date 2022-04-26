@@ -83,7 +83,8 @@
                     <label class="form__label">ImgUrl:</label>
                     <input class="form__input" type="text" name="equipment.image" />
                 </div>
-                <button class="button button-primary mx-auto my-0" type="submit">Thêm</button>
+                <input type="hidden" name="equipment.feedName" value="@ViewBag.feedname" id="feednamekey"/>
+                <button class="button button-primary mx-auto my-0" id="hey" type="submit">Thêm</button>
             </form>
           </div>
         </div>
@@ -151,6 +152,7 @@
           </div>
         </div>
       </div>
+      <input type="hidden" value="@ViewBag.aiokey" id="aiokey"/>
     </section>
 @section Scripts{
 <script>
@@ -169,5 +171,48 @@
             modal.style.display = "none";
         }
     }
+</script>
+<script type="text/javascript">
+//*************CUSTOM variable******************* */
+    var a = document.querySelector("#aiokey").getAttribute("value");
+    var userKey = a;
+    var userName = "thuongnguyen2001";
+    //********************************************** */
+    console.log(a); 
+    const createFeed = function (
+      userKey,
+      userName,
+      feedName,
+      errorMsg = "Something went wrong"
+    ) {
+      const url = `https://io.adafruit.com/api/v2/${userName}/feeds`;
+      return fetch(url, {
+        body: `{"feed": {"name": "${feedName}","visibility": "public"}}`,
+        headers: {
+          "Content-Type": "application/json",
+          "X-Aio-Key": `${userKey}`,
+        },
+        method: "POST",
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error(`${errorMsg} ${response}`);
+          //   if (!response.ok) return console.log(response);
+          return response.json();
+        })
+        .then((response) => {
+          return response.key;
+        })
+        .catch((err) => {
+          return err;
+        });
+    };
+    document.querySelector("#hey").addEventListener("click", (e) => {
+     //e.preventDefault(); 
+        var feedName = document.querySelector("#feednamekey").getAttribute("value");
+       //console.log(feedName);
+      createFeed(userKey, userName, feedName).then((result) => {
+        console.log(result); // Feed key name is returned if the process success
+      });
+    });
 </script>
 }

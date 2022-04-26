@@ -19,5 +19,6 @@ namespace SmartFarm.Services
         void DeleteEquipment(int id);
         EditEquipmentViewModel GetEquipmentDetail(int id);
         void PostEditEquipment(EditEquipmentViewModel equipment);
+        string GetAIOKey(int idFarm);
     }
 }

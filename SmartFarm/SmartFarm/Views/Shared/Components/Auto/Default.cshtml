@@ -7,7 +7,13 @@
                   inputFeedName="@sp.inputOupts.feedName" time="@sp.inputOupts.timeSet.TotalSeconds"
                   Max="@sp.inputOupts.nguongMax" Min="@sp.inputOupts.nguongMin" auto="@sp.auto1" calculate="@sp.inputOupts.calculate.ToString()" class="auto_control"/>
                   }
-            <input type="hidden" value="@Model[0].AioKey" id="aiokey"/>
+            @{
+                if(@Model.Count() != 0)
+                {
+                        <input type="hidden" value="@Model[0].AioKey" id="aiokey"/>
+                }
+            }
+        
             <input type="hidden" class="controller"/>
 <script type="text/javascript">
 if(document.getElementsByClassName("controller").length!=2)

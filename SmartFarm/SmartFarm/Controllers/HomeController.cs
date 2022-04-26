@@ -57,6 +57,8 @@ namespace SmartFarm.Controllers
         public async Task<IActionResult> ManageDevice(int idFarm)
         {
             var equipment = await _customerService.GetEquipmentAsync(idFarm);
+            ViewBag.feedname = HomeController.RandomString();
+            ViewBag.aiokey = _customerService.GetAIOKey(idFarm);
             return View(equipment);
         
         }
@@ -126,6 +128,28 @@ namespace SmartFarm.Controllers
         {
             _customerService.DeleteEquipment(id);
             return RedirectToAction("ManageDevice", "Home", new { idFarm = _userManager.GetUserAsync(User).Result.SoHuuTrangTrai });
+        }
+        public static string RandomString()
+        {
+            Random rand = new Random();
+            int stringlen = rand.Next(4, 10);
+            int randValue;
+            string str = "";
+            char letter;
+            for (int i = 0; i < stringlen; i++)
+            {
+
+                // Generating a random number.
+                randValue = rand.Next(0, 26);
+
+                // Generating random character by converting
+                // the random number into character.
+                letter = Convert.ToChar(randValue + 65);
+
+                // Appending the letter to string.
+                str = str + letter;
+            }
+            return str;
         }
     }
 }

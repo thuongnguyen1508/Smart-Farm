@@ -18,5 +18,6 @@ namespace SmartFarm.Models
         public string image { get; set; }
         public bool trangThai { get; set; }
         public int idOutput { get; set; }
+        public string feedName { get; set; }
     }
 }

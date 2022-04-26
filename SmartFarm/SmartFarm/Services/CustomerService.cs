@@ -154,7 +154,8 @@ namespace SmartFarm.Services
                 {
                     Id = IdOutput,
                     TrangThaiHoatDong = true,
-                    ValueOpen=valueOpen+2
+                    ValueOpen=valueOpen+2,
+                    FeedName = equipment.feedName
                 };
                 _context.Output.Add(newOutput);
                 _context.SaveChanges();
@@ -178,7 +179,8 @@ namespace SmartFarm.Services
                 var newInput = new Input()
                 {
                     Id = IdInput,
-                    LoaiThietBi=equipment.nameIn
+                    LoaiThietBi=equipment.nameIn,
+                    FeedName = equipment.feedName
                 };
                 _context.Input.Add(newInput);
                 _context.SaveChanges();
@@ -256,5 +258,13 @@ namespace SmartFarm.Services
             _context.InputOutput.Add(newInputOutput);
             _context.SaveChanges();
         }
+        public string GetAIOKey(int idFarm)
+        {
+            var aiokey = (from c in _context.Farm
+                          where c.Id == idFarm
+                          select c.AioKey).FirstOrDefault();
+            return aiokey;
+        }
     }
+
 }
