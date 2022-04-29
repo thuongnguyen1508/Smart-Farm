@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartFarm.Data;
 
 namespace SmartFarm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220422071049_AddTableDataOutput")]
+    partial class AddTableDataOutput
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -247,17 +249,20 @@ namespace SmartFarm.Migrations
                     b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("OutputId")
+                    b.Property<bool>("Method_Controll")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("OutputId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("ThongSo")
-                        .HasColumnType("bit");
+                    b.Property<int>("Output_Id")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("User_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -486,9 +491,7 @@ namespace SmartFarm.Migrations
 
                     b.HasOne("SmartFarm.Data.Entities.Output", "Output")
                         .WithMany("DataOutputs")
-                        .HasForeignKey("OutputId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OutputId");
                 });
 
             modelBuilder.Entity("SmartFarm.Data.Entities.Equipment", b =>

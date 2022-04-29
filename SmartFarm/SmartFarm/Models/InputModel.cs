@@ -20,5 +20,6 @@ namespace SmartFarm.Models
         public string AioKey { get; set; }
         public string DrawFunction { get; set; }
         public int typeChart { get; set; }
+        public bool _checked { get; set; }
     }
 }

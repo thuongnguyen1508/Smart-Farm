@@ -14,5 +14,6 @@ namespace SmartFarm.Data.Entities
         public List<InputOutput> InputOutputs { get; set; }
         public int ValueOpen { get; set; }
         public bool Auto { get; set; }
+        public List<DataOutput> DataOutputs { get; set; }
     }
 }

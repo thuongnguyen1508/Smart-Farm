@@ -58,7 +58,8 @@ namespace SmartFarm.Services
                                     nguongMax=i.Max,
                                     timeSet=i.ThoiGianTruyXuat,
                                     donVi=i.DonVi,
-                                    AioKey=f.AioKey
+                                    AioKey=f.AioKey,
+                                    _checked = i.Calculator
                                 }).ToListAsync();
             return result;
         }
@@ -70,6 +71,7 @@ namespace SmartFarm.Services
             input1.Max=input.nguongMax;
             input1.Min=input.nguongMin;
             input1.ThoiGianTruyXuat=input.timeSet;
+            input1.Calculator=input._checked;
             _context.SaveChanges();
         }
     }

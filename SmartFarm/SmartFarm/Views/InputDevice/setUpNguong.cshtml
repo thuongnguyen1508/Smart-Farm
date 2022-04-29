@@ -28,7 +28,7 @@
       <div class="container1">
         <div class="device-list">
           @foreach(var input in Model){
-            <div class="adding-device" style="height: 46rem;width:32rem">
+            <div class="adding-device" style="height: 50rem;width:33.5rem">
               <figure class="device-figure">
                 <img src="@input.image" alt="Động cơ" class="device-img" height="100" />
                 <figcaption class="device-name">@input.name</figcaption> 
@@ -59,6 +59,20 @@
                       <option value="300">5 phút</option>
                       <option value="600">10 phút</option>
                     </select>
+                    <div>
+                      <select class="form__input" name="_checked" required>
+                        @if(input._checked==false)
+                        {
+                          <option value="" disable>&lt Min bật thiết bị</option>
+                        }
+                        @if(input._checked==true)
+                        {
+                          <option value="" disable>&gt Max bật thiết bị</option>
+                        }
+                        <option value="false">&lt Min bật thiết bị</option>
+                        <option value="true">&gt Max bật thiết bị</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
                 <input type="hidden" value="@input.id" name="id" />
