@@ -52,7 +52,7 @@ namespace SmartFarm.Controllers
         public IActionResult PostEditAccount(UserInforViewModel account)
         {
             _customerService.PostEditAccount(account);
-            return RedirectToAction("InforUser", "Home");
+            return RedirectToAction("InforUser", "Home",new { UserName=account.UserName});
         }
         public async Task<IActionResult> ManageDevice(int idFarm)
         {
