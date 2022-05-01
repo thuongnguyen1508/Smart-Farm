@@ -109,6 +109,7 @@
     var year = d.getFullYear();
     var month = d.getMonth() + 1;
     if (month < 10) month = '0' + month;
+    if(date<10) date='0'+date;
     var today = year + '-' + month + '-' + date;
     document.querySelector('.time._to').max = today;
     document.querySelector('.time._to').value = today;

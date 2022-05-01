@@ -100,7 +100,7 @@
                       @if (e.loaiThietBi == "output")
                       {
                           <figure class="device__figure">
-                              <form asp-controller="Home" asp-action="DeleteEquipment">
+                              <form asp-controller="Home" asp-action="DeleteEquipment" onsubmit="return confirm(`Xác nhận xóa thiết bị?`);">
                                   <input name="id" type="hidden" value="@e.id" />
                                   <button class="delete">X</button>
                               </form>
@@ -129,7 +129,7 @@
                       @if (e.loaiThietBi == "input")
                       {
                           <figure class="device__figure">
-                              <form asp-controller="Home" asp-action="DeleteEquipment">
+                              <form asp-controller="Home" asp-action="DeleteEquipment"  onsubmit="return confirm(`Xác nhận xóa thiết bị?`);" >
                                   <input name="id" type="hidden" value="@e.id" />
                                   <button class="delete">X</button>
                               </form>
@@ -211,6 +211,7 @@
         var feedName = document.querySelector("#feednamekey").getAttribute("value");
        //console.log(feedName);
       createFeed(userKey, userName, feedName).then((result) => {
+        alert(`Thêm thành công thiết bị vào hệ thống, Feed của thiết bị là: ${feedName}`)
         console.log(result); // Feed key name is returned if the process success
       });
     });

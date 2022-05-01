@@ -224,7 +224,6 @@ th {
 }
 
 .map {
-    position: fixed !important;
     width: 37rem;
     border: 3px solid #7bc36c;
     border-radius: 13px;

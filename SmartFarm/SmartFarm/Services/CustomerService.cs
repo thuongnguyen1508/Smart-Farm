@@ -121,7 +121,7 @@ namespace SmartFarm.Services
             var IdFarm = await (from a in _context.Customer
                                 where a.Id == Idcustomer
                                 select a.SoHuuTrangTrai).FirstOrDefaultAsync();
-            var viTri = equipment.X +" "+ equipment.Y;
+            var viTri = "X:"+equipment.X +" "+"Y:"+ equipment.Y;
             if (equipment.loaiThietBi=="output")
             {
                 var newEquipment = new Equipment()
@@ -184,14 +184,18 @@ namespace SmartFarm.Services
                 };
                 _context.Input.Add(newInput);
                 _context.SaveChanges();
-                var newInOut = new InputOutput()
+                if (equipment.idOutput!=0)
                 {
-                    IdInput = IdInput,
-                    IdOutput = equipment.idOutput,
-                    LoaiThietBiInput = equipment.nameIn
-                };
-                _context.InputOutput.Add(newInOut);
-                _context.SaveChanges();
+                    var newInOut = new InputOutput()
+                    {
+                        IdInput = IdInput,
+                        IdOutput = equipment.idOutput,
+                        LoaiThietBiInput = equipment.nameIn
+                    };
+
+                    _context.InputOutput.Add(newInOut);
+                    _context.SaveChanges();
+                }
             }
             
         }
