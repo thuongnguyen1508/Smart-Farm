@@ -250,17 +250,21 @@ namespace SmartFarm.Services
             var Output = (from o in _context.InputOutput
                           where o.IdInput == equipment.id 
                           select o).FirstOrDefault();
-            var loaithietbi = Output.LoaiThietBiInput;
-            _context.Remove(Output);
-            _context.SaveChanges();
-            var newInputOutput = new InputOutput()
+            if (Output !=null)
             {
-                IdInput = equipment.id,
-                IdOutput = equipment.idOutput,
-                LoaiThietBiInput = loaithietbi
-            };
-            _context.InputOutput.Add(newInputOutput);
-            _context.SaveChanges();
+                var loaithietbi = Output.LoaiThietBiInput;
+                _context.Remove(Output);
+                _context.SaveChanges();
+                var newInputOutput = new InputOutput()
+                {
+                    IdInput = equipment.id,
+                    IdOutput = equipment.idOutput,
+                    LoaiThietBiInput = loaithietbi
+                };
+                _context.InputOutput.Add(newInputOutput);
+                _context.SaveChanges();
+            }
+            
         }
         public string GetAIOKey(int idFarm)
         {

@@ -109,7 +109,7 @@ namespace SmartFarm.Controllers
             var user = await _customerService.PostPassword(account);
             if (user == false)
             {
-                RedirectToAction("InforUser", "Home");
+                RedirectToAction("InforUser", "Home",new { UserName = account.UserName });
             }
             return RedirectToAction("Home");
         }

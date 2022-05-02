@@ -41,12 +41,12 @@ namespace SmartFarm.Controllers
         {
             if (account.Password!=account.RePassword)
             {
-                return RedirectToAction("EditUser", "Admin");
+                return RedirectToAction("EditUser", "Admin", new { UserName = account.UserName });
             }
             var user = await _adminService.PostPassword(account);
             if (user==false)
             {
-                RedirectToAction("EditUser", "Admin");
+                RedirectToAction("EditUser", "Admin", new { UserName = account.UserName });
             }
             return RedirectToAction("ManageUser", "Admin");
         }
