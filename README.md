@@ -37,5 +37,5 @@ What I used to build this app:
 <p align="right"><a href="#top"></a></p>
 
 ## 4. Deploy
-Link: [link](https://arm.herokuapp.com).
+Link: [link](https://aefarm.herokuapp.com/).
 
