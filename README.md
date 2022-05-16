@@ -20,7 +20,7 @@
 
 A website helps farm owner manage their farm by controlling IoT devices. 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top"></a>)</p>
 
 ## 2. UX-UI
 
@@ -43,7 +43,7 @@ A website helps farm owner manage their farm by controlling IoT devices.
 
 ###### Homepage: Follow this link to see [link](https://www.figma.com/file/nWRBd3t9ttk1tKzvtRYcEh/AeFarm?node-id=0%3A1).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top"></a>)</p>
 
 ### 3. Built With
 
@@ -52,7 +52,6 @@ What I used to build this app:
 * Bootstrap 5.
 * SqlServer
 * .Net core 3.1
-* [Pug](https://pugjs.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
