@@ -20,7 +20,7 @@
 
 A website helps farm owner manage their farm by controlling IoT devices. 
 
-<p align="right">(<a href="#top"></a>)</p>
+<p align="right"><a href="#top"></a></p>
 
 ## 2. UX-UI
 
@@ -53,7 +53,7 @@ What I used to build this app:
 * SqlServer
 * .Net core 3.1
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 
 
