@@ -1,6 +1,6 @@
 ## 1. About The Project
 
-A website helps farm owner manage their farm by controlling IoT devices.
+This web have been created to contribute in the agriculture sector a more automatic way of managing devices remotely by using IOT technologiy concepts.
 
 Some basic features included in this website for customer: login, add/edit/remove devices of their farm, see statistics, automatic control device .
 
@@ -21,8 +21,11 @@ What I intergrate in this project?
 ###### Header:
 ![image](https://github.com/ThuongNguyenVan158/Smart-Farm/blob/main/SmartFarm/SmartFarm/NewFolder/header.png)
 
-###### Footer:
-![image](https://github.com/ThuongNguyenVan158/Smart-Farm/blob/main/SmartFarm/SmartFarm/NewFolder/footer.png)
+###### Threshold setting:
+![image](https://github.com/ThuongNguyenVan158/Smart-Farm/blob/main/SmartFarm/SmartFarm/NewFolder/setmaxmin.png)
+
+###### Control device:
+![image](https://github.com/ThuongNguyenVan158/Smart-Farm/blob/main/SmartFarm/SmartFarm/NewFolder/controldevice.png)
 
 ###### Line Chart:
 ![image](https://github.com/ThuongNguyenVan158/Smart-Farm/blob/main/SmartFarm/SmartFarm/NewFolder/Static.png)
@@ -46,7 +49,7 @@ What I used to build this app:
 <p align="right"><a href="#top"></a></p>
 
 ## 4. Reference
-Deploy: [link](https://aefarm.herokuapp.com/).
-Figma: [link](https://www.figma.com/file/nWRBd3t9ttk1tKzvtRYcEh/AeFarm?node-id=0%3A1).
+- Deploy: [link](https://aefarm.herokuapp.com/).
+- Figma: [link](https://www.figma.com/file/nWRBd3t9ttk1tKzvtRYcEh/AeFarm?node-id=0%3A1).
 
 
