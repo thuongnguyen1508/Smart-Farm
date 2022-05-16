@@ -2,7 +2,7 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
+<!-- <br />
 <div align="center">
   
   <img src="https://natours.netlify.app/img/logo-green-2x.png" alt="Logo" height="80">
@@ -10,7 +10,7 @@
   <h3 align="center">Natour app</h3>
 
   
-</div> -->
+</div> --> -->
 
 
 
@@ -18,7 +18,7 @@
 <!-- ABOUT THE PROJECT -->
 ## 1. About The Project
 
-![image](https://user-images.githubusercontent.com/82920386/159165532-23b47b47-8f64-4ca9-82d3-27d134ff0660.png)
+<!-- ![image](https://user-images.githubusercontent.com/82920386/159165532-23b47b47-8f64-4ca9-82d3-27d134ff0660.png) -->
 
 A website helps farm owner manage their farm by controlling IoT devices. 
 
@@ -28,6 +28,7 @@ A website helps farm owner manage their farm by controlling IoT devices.
 ###### Homepage: Follow this link to see [link](https://www.figma.com/file/nWRBd3t9ttk1tKzvtRYcEh/AeFarm?node-id=0%3A1).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ### 3. Built With
 
 What I used to build this app:
