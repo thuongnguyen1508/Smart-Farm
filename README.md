@@ -18,8 +18,6 @@
 <!-- ABOUT THE PROJECT -->
 ## 1. About The Project
 
-<!-- ![image](https://user-images.githubusercontent.com/82920386/159165532-23b47b47-8f64-4ca9-82d3-27d134ff0660.png) -->
-
 A website helps farm owner manage their farm by controlling IoT devices. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
