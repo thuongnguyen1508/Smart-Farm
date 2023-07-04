@@ -1,13 +1,13 @@
 ## 1. About The Project
 
-This web have been created to contribute in the agriculture sector a more automatic way of managing devices remotely by using IOT technologiy concepts.
+This web has been created to contribute to the agriculture sector with a more automatic way of managing devices remotely by using IOT technology concepts.
 
-Some basic features included in this website for customer: login, add/edit/remove devices of their farm, see statistics, automatic control device .
+Some basic features included in this website for customers: login, add/edit/remove devices of their farm, statistics dashboard, and remote device control.
 
-What I intergrate in this project?
-* Adafruit api to connect with gateway IOT which communicate with various of sensors (through pub/sub protocol) used to serve particular customer demands.
+What did I integrate into this project?
+* Adafruit API to connect with gateway IOT which communicates with various sensors (through pub/sub protocol). (temperature, humidity, sound sensors) 
 * Reasonable design patterns: Repository, DI, Strategy.
-* Chart.js api for representing data in more significant way.s
+* Chart.js API for representing data in more significant ways
 
 
 <p align="right"><a href="#top"></a></p>
